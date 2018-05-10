@@ -6,7 +6,6 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnSelect
  * @format
  * @flow
  */
@@ -16,10 +15,10 @@
 import type DraftEditor from './DraftEditor.react';
 
 const DraftJsDebugLogging = require('./DraftJsDebugLogging');
-var EditorState = require('./EditorState');
-var ReactDOM = require('react-dom');
+const EditorState = require('./EditorState');
+const ReactDOM = require('react-dom');
 
-var getDraftEditorSelection = require('./getDraftEditorSelection');
+const getDraftEditorSelection = require('./getDraftEditorSelection');
 const invariant = require('fbjs/lib/invariant');
 
 function editOnSelect(editor: DraftEditor): void {
@@ -37,12 +36,12 @@ function editOnSelect(editor: DraftEditor): void {
     return;
   }
 
-  var editorState = editor.props.editorState;
+  let editorState = editor.props.editorState;
   const editorNode = ReactDOM.findDOMNode(editor.editorContainer);
   invariant(editorNode, 'Missing editorNode');
   invariant(editorNode.firstChild instanceof HTMLElement, 'editorNode.firstChild is not an HTMLElement');
-  var documentSelection = getDraftEditorSelection(editorState, editorNode.firstChild);
-  var updatedSelectionState = documentSelection.selectionState;
+  const documentSelection = getDraftEditorSelection(editorState, editorNode.firstChild);
+  const updatedSelectionState = documentSelection.selectionState;
 
   if (updatedSelectionState !== editorState.getSelection()) {
     if (documentSelection.needsRecovery) {

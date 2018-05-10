@@ -80,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 70);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -161,7 +161,6 @@ module.exports = invariant;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule EditorState
  * @format
  * 
  */
@@ -176,7 +175,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var BlockTree = __webpack_require__(45);
 var ContentState = __webpack_require__(30);
-var EditorBidiService = __webpack_require__(82);
+var EditorBidiService = __webpack_require__(83);
 var Immutable = __webpack_require__(0);
 var SelectionState = __webpack_require__(17);
 
@@ -243,10 +242,10 @@ var EditorState = function () {
       var newContent = put.currentContent || editorState.getCurrentContent();
 
       if (decorator !== existingDecorator) {
-        var treeMap = state.get('treeMap');
-        var newTreeMap;
+        var _treeMap = state.get('treeMap');
+        var newTreeMap = void 0;
         if (decorator && existingDecorator) {
-          newTreeMap = regenerateTreeForNewDecorator(newContent, newContent.getBlockMap(), treeMap, decorator, existingDecorator);
+          newTreeMap = regenerateTreeForNewDecorator(newContent, newContent.getBlockMap(), _treeMap, decorator, existingDecorator);
         } else {
           newTreeMap = generateNewTreeMap(newContent, decorator);
         }
@@ -825,7 +824,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule CharacterMetadata
  * @format
  * 
  */
@@ -946,7 +944,6 @@ module.exports = CharacterMetadata;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftModifier
  * @format
  * 
  */
@@ -954,20 +951,20 @@ module.exports = CharacterMetadata;
 
 
 var CharacterMetadata = __webpack_require__(4);
-var ContentStateInlineStyle = __webpack_require__(71);
+var ContentStateInlineStyle = __webpack_require__(72);
 var Immutable = __webpack_require__(0);
 
-var applyEntityToContentState = __webpack_require__(72);
-var getCharacterRemovalRange = __webpack_require__(74);
+var applyEntityToContentState = __webpack_require__(73);
+var getCharacterRemovalRange = __webpack_require__(75);
 var getContentStateFragment = __webpack_require__(24);
-var gkx = __webpack_require__(8);
-var insertFragmentIntoContentState = __webpack_require__(77);
-var insertTextIntoContentState = __webpack_require__(78);
+var gkx = __webpack_require__(7);
+var insertFragmentIntoContentState = __webpack_require__(78);
+var insertTextIntoContentState = __webpack_require__(79);
 var invariant = __webpack_require__(1);
-var modifyBlockForContentState = __webpack_require__(79);
+var modifyBlockForContentState = __webpack_require__(80);
 var removeEntitiesAtEdges = __webpack_require__(42);
-var removeRangeFromContentState = __webpack_require__(80);
-var splitBlockInContentState = __webpack_require__(81);
+var removeRangeFromContentState = __webpack_require__(81);
+var splitBlockInContentState = __webpack_require__(82);
 
 var OrderedSet = Immutable.OrderedSet;
 
@@ -1112,7 +1109,6 @@ module.exports = DraftModifier;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule ContentBlockNode
  * @format
  * 
  *
@@ -1265,6 +1261,32 @@ module.exports = ContentBlockNode;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @format
+ *  strict
+ */
+
+
+
+module.exports = function (name) {
+  if (typeof window !== 'undefined' && window.__DRAFT_GKX) {
+    return !!window.__DRAFT_GKX[name];
+  }
+  return false;
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 /**
@@ -1286,33 +1308,6 @@ var nullthrows = function nullthrows(x) {
 module.exports = nullthrows;
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule gkx
- * @format
- *  strict
- */
-
-
-
-module.exports = function (name) {
-  if (typeof window !== 'undefined' && window.__DRAFT_GKX) {
-    return !!window.__DRAFT_GKX[name];
-  }
-  return false;
-};
-
-/***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
@@ -1331,7 +1326,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule generateRandomKey
  * @format
  *  strict
  */
@@ -1367,11 +1361,11 @@ module.exports = generateRandomKey;
 
 
 
-var UserAgentData = __webpack_require__(94);
-var VersionRange = __webpack_require__(97);
+var UserAgentData = __webpack_require__(95);
+var VersionRange = __webpack_require__(98);
 
-var mapObject = __webpack_require__(98);
-var memoizeStringOnly = __webpack_require__(99);
+var mapObject = __webpack_require__(99);
+var memoizeStringOnly = __webpack_require__(100);
 
 /**
  * Checks to see whether `name` and `version` satisfy `query`.
@@ -1637,7 +1631,6 @@ module.exports = g;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule ContentBlock
  * @format
  * 
  */
@@ -1827,7 +1820,6 @@ module.exports = cx;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftOffsetKey
  * @format
  * 
  */
@@ -2088,7 +2080,6 @@ module.exports = UnicodeUtils;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule SelectionState
  * @format
  * 
  */
@@ -2234,7 +2225,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_18__;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule BlockMapBuilder
  * @format
  * 
  */
@@ -2269,7 +2259,6 @@ module.exports = BlockMapBuilder;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule findRangesImmutable
  * @format
  * 
  */
@@ -2324,7 +2313,6 @@ var _extends = _assign || function (target) { for (var i = 1; i < arguments.leng
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEntity
  * @format
  * 
  */
@@ -2518,7 +2506,6 @@ module.exports = DraftEntity;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule isEventHandled
  * @format
  * 
  */
@@ -2548,7 +2535,6 @@ module.exports = isEventHandled;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule removeTextWithStrategy
  * @format
  * 
  */
@@ -2597,7 +2583,6 @@ module.exports = removeTextWithStrategy;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getContentStateFragment
  * @format
  * 
  */
@@ -2779,7 +2764,6 @@ module.exports = UnicodeBidiDirection;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DefaultDraftBlockRenderMap
  * @format
  * 
  */
@@ -2858,7 +2842,7 @@ module.exports = DefaultDraftBlockRenderMap;
  * @typechecks
  */
 
-var getStyleProperty = __webpack_require__(103);
+var getStyleProperty = __webpack_require__(104);
 
 /**
  * @param {DOMNode} element [description]
@@ -2926,8 +2910,8 @@ module.exports = Style;
 
 
 
-var getDocumentScrollElement = __webpack_require__(107);
-var getUnboundedScrollPosition = __webpack_require__(108);
+var getDocumentScrollElement = __webpack_require__(108);
+var getUnboundedScrollPosition = __webpack_require__(109);
 
 /**
  * Gets the scroll position of the supplied element or window.
@@ -3016,7 +3000,6 @@ module.exports = emptyFunction;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule ContentState
  * @format
  * 
  */
@@ -3038,7 +3021,7 @@ var Immutable = __webpack_require__(0);
 var SelectionState = __webpack_require__(17);
 
 var generateRandomKey = __webpack_require__(10);
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 var sanitizeDraftText = __webpack_require__(31);
 
 var List = Immutable.List,
@@ -3220,7 +3203,6 @@ module.exports = ContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule sanitizeDraftText
  * @format
  *  strict
  */
@@ -3448,7 +3430,6 @@ module.exports = {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getEntityKeyForSelection
  * @format
  * 
  */
@@ -3461,7 +3442,7 @@ module.exports = {
  * and `SEGMENTED` entities should not be used for insertion behavior.
  */
 function getEntityKeyForSelection(contentState, targetSelection) {
-  var entityKey;
+  var entityKey = void 0;
 
   if (targetSelection.isCollapsed()) {
     var key = targetSelection.getAnchorKey();
@@ -3515,7 +3496,7 @@ module.exports = getEntityKeyForSelection;
  * 
  */
 
-var isTextNode = __webpack_require__(101);
+var isTextNode = __webpack_require__(102);
 
 /*eslint-disable no-bitwise */
 
@@ -3644,7 +3625,6 @@ module.exports = Scroll;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule findAncestorOffsetKey
  * @format
  * 
  */
@@ -3683,7 +3663,6 @@ module.exports = findAncestorOffsetKey;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule KeyBindingUtil
  * @format
  * 
  */
@@ -3728,7 +3707,6 @@ module.exports = KeyBindingUtil;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule moveSelectionBackward
  * @format
  * 
  */
@@ -3787,7 +3765,6 @@ module.exports = moveSelectionBackward;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getSafeBodyFromHTML
  * @format
  * 
  */
@@ -3805,7 +3782,7 @@ var isOldIE = UserAgent.isBrowser('IE <= 9');
 // https://developer.mozilla.org/en-US/Add-ons/Code_snippets/HTML_to_DOM
 
 function getSafeBodyFromHTML(html) {
-  var doc;
+  var doc = void 0;
   var root = null;
   // Provides a safe context
   if (!isOldIE && document.implementation && document.implementation.createHTMLDocument) {
@@ -3832,7 +3809,6 @@ module.exports = getSafeBodyFromHTML;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule randomizeBlockMapKeys
  * @format
  * 
  */
@@ -3951,7 +3927,6 @@ module.exports = randomizeBlockMapKeys;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule removeEntitiesAtEdges
  * @format
  * 
  */
@@ -4007,7 +3982,7 @@ function removeEntitiesAtEdges(contentState, selectionState) {
  * Note: This method requires that the offset be in an entity range.
  */
 function getRemovalRange(characters, entityKey, offset) {
-  var removalRange;
+  var removalRange = void 0;
 
   // Iterates through a list looking for ranges of matching items
   // based on the 'isEqual' callback.
@@ -4045,14 +4020,14 @@ function removeForBlock(entityMap, block, offset) {
     var entity = entityMap.__get(entityAfterCursor);
     if (entity.getMutability() !== 'MUTABLE') {
       var _getRemovalRange = getRemovalRange(chars, entityAfterCursor, offset),
-          start = _getRemovalRange.start,
-          end = _getRemovalRange.end;
+          _start = _getRemovalRange.start,
+          _end = _getRemovalRange.end;
 
-      var current;
-      while (start < end) {
-        current = chars.get(start);
-        chars = chars.set(start, CharacterMetadata.applyEntity(current, null));
-        start++;
+      var current = void 0;
+      while (_start < _end) {
+        current = chars.get(_start);
+        chars = chars.set(_start, CharacterMetadata.applyEntity(current, null));
+        _start++;
       }
       return block.set('characterList', chars);
     }
@@ -4076,7 +4051,6 @@ module.exports = removeEntitiesAtEdges;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule insertIntoList
  * @format
  * 
  */
@@ -4120,7 +4094,6 @@ module.exports = insertIntoList;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getNextDelimiterBlockKey
  * @format
  * 
  *
@@ -4177,7 +4150,6 @@ module.exports = getNextDelimiterBlockKey;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule BlockTree
  * @format
  * 
  */
@@ -4296,7 +4268,6 @@ module.exports = BlockTree;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEntityInstance
  * @legacyServerCallableInstance
  * @format
  * 
@@ -4372,7 +4343,6 @@ module.exports = DraftEntityInstance;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DefaultDraftInlineStyle
  * @format
  *  strict
  */
@@ -4415,7 +4385,6 @@ module.exports = {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule isSelectionAtLeafStart
  * @format
  * 
  */
@@ -4469,7 +4438,6 @@ module.exports = isSelectionAtLeafStart;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorLeaf.react
  * @format
  * 
  */
@@ -4484,12 +4452,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DraftEditorTextNode = __webpack_require__(93);
+var DraftEditorTextNode = __webpack_require__(94);
 var React = __webpack_require__(9);
 var ReactDOM = __webpack_require__(18);
 
 var invariant = __webpack_require__(1);
-var setDraftEditorSelection = __webpack_require__(100);
+var setDraftEditorSelection = __webpack_require__(101);
 
 /**
  * All leaf nodes in the editor are spans with single text nodes. Leaf
@@ -4646,7 +4614,6 @@ module.exports = DraftEditorLeaf;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftJsDebugLogging
  */
 
 
@@ -4718,7 +4685,7 @@ module.exports = getActiveElement;
  * @typechecks
  */
 
-var getElementRect = __webpack_require__(106);
+var getElementRect = __webpack_require__(107);
 
 /**
  * Gets an element's position in pixels relative to the viewport. The returned
@@ -4815,7 +4782,6 @@ module.exports = getViewportDimensions;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorBlock.react
  * @format
  * 
  */
@@ -4846,7 +4812,7 @@ var getElementPosition = __webpack_require__(52);
 var getScrollPosition = __webpack_require__(28);
 var getViewportDimensions = __webpack_require__(53);
 var invariant = __webpack_require__(1);
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 var SCROLL_BUFFER = 10;
 
@@ -4974,23 +4940,27 @@ var DraftEditorBlock = function (_React$Component) {
       var start = leavesForLeafSet.first().get('start');
       var end = leavesForLeafSet.last().get('end');
       var decoratedText = text.slice(start, end);
+      var entityKey = block.getEntityAt(leafSet.get('start'));
 
       // Resetting dir to the same value on a child node makes Chrome/Firefox
       // confused on cursor movement. See http://jsfiddle.net/d157kLck/3/
       var dir = UnicodeBidiDirection.getHTMLDirIfDifferent(UnicodeBidi.getDirection(decoratedText), _this2.props.direction);
 
+      var commonProps = {
+        contentState: _this2.props.contentState,
+        decoratedText: decoratedText,
+        dir: dir,
+        key: decoratorOffsetKey,
+        start: start,
+        end: end,
+        blockKey: blockKey,
+        entityKey: entityKey,
+        offsetKey: decoratorOffsetKey
+      };
+
       return React.createElement(
         DecoratorComponent,
-        _extends({}, decoratorProps, {
-          contentState: _this2.props.contentState,
-          decoratedText: decoratedText,
-          dir: dir,
-          key: decoratorOffsetKey,
-          start: start,
-          end: end,
-          blockKey: blockKey,
-          entityKey: block.getEntityAt(leafSet.get('start')),
-          offsetKey: decoratorOffsetKey }),
+        _extends({}, decoratorProps, commonProps),
         leaves
       );
     }).toArray();
@@ -5037,9 +5007,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @typechecks
  */
 
-var PhotosMimeType = __webpack_require__(112);
+var PhotosMimeType = __webpack_require__(113);
 
-var createArrayFromMixed = __webpack_require__(113);
+var createArrayFromMixed = __webpack_require__(114);
 var emptyFunction = __webpack_require__(29);
 
 var CR_LF_REGEX = new RegExp('\r\n', 'g');
@@ -5257,7 +5227,6 @@ module.exports = DataTransfer;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getSelectionOffsetKeyForNode
  * @format
  * 
  */
@@ -5300,7 +5269,6 @@ module.exports = getSelectionOffsetKeyForNode;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getTextContentFromFiles
  * @format
  * 
  */
@@ -5347,15 +5315,15 @@ function readFile(file, callback) {
   }
 
   if (file.type === '') {
-    var contents = '';
+    var _contents = '';
     // Special-case text clippings, which have an empty type but include
     // `.textClipping` in the file name. `readAsText` results in an empty
     // string for text clippings, so we force the file name to serve
     // as the text value for the file.
     if (TEXT_CLIPPING_REGEX.test(file.name)) {
-      contents = file.name.replace(TEXT_CLIPPING_REGEX, '');
+      _contents = file.name.replace(TEXT_CLIPPING_REGEX, '');
     }
-    callback(contents);
+    callback(_contents);
     return;
   }
 
@@ -5387,7 +5355,6 @@ module.exports = getTextContentFromFiles;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getUpdatedSelectionState
  * @format
  * 
  */
@@ -5396,7 +5363,7 @@ module.exports = getTextContentFromFiles;
 
 var DraftOffsetKey = __webpack_require__(15);
 
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 function getUpdatedSelectionState(editorState, anchorKey, anchorOffset, focusKey, focusOffset) {
   var selection = nullthrows(editorState.getSelection());
@@ -5469,7 +5436,6 @@ module.exports = getUpdatedSelectionState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getFragmentFromSelection
  * @format
  * 
  */
@@ -5503,7 +5469,6 @@ module.exports = getFragmentFromSelection;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getRangeClientRects
  * @format
  * 
  */
@@ -5572,7 +5537,6 @@ module.exports = getRangeClientRects;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getDraftEditorSelectionWithNodes
  * @format
  * 
  */
@@ -5583,7 +5547,7 @@ var findAncestorOffsetKey = __webpack_require__(37);
 var getSelectionOffsetKeyForNode = __webpack_require__(56);
 var getUpdatedSelectionState = __webpack_require__(58);
 var invariant = __webpack_require__(1);
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 /**
  * Convert the current selection range to an anchor/focus pair of offset keys
@@ -5701,14 +5665,14 @@ function getPointForNonTextNode(editorRoot, startNode, childOffset) {
   // find the leftmost ("first") leaf in the tree and use that as the offset
   // key.
   if (childOffset === 0) {
-    var key = null;
+    var _key = null;
     if (offsetKey != null) {
-      key = offsetKey;
+      _key = offsetKey;
     } else {
       var firstLeaf = getFirstLeaf(node);
-      key = nullthrows(getSelectionOffsetKeyForNode(firstLeaf));
+      _key = nullthrows(getSelectionOffsetKeyForNode(firstLeaf));
     }
-    return { key: key, offset: 0 };
+    return { key: _key, offset: 0 };
   }
 
   var nodeBeforeCursor = node.childNodes[childOffset - 1];
@@ -5761,14 +5725,13 @@ module.exports = getDraftEditorSelectionWithNodes;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftRemovableWord
  * @format
  * 
  */
 
 
 
-var TokenizeUtil = __webpack_require__(132);
+var TokenizeUtil = __webpack_require__(133);
 
 var punctuation = TokenizeUtil.getPunctuation();
 
@@ -5818,7 +5781,6 @@ module.exports = DraftRemovableWord;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule moveSelectionForward
  * @format
  * 
  */
@@ -5840,7 +5802,7 @@ function moveSelectionForward(editorState, maxDistance) {
   var content = editorState.getCurrentContent();
 
   var focusKey = key;
-  var focusOffset;
+  var focusOffset = void 0;
 
   var block = content.getBlockForKey(key);
 
@@ -5869,7 +5831,6 @@ module.exports = moveSelectionForward;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule convertFromHTMLToContentBlocks
  * @format
  * 
  */
@@ -5898,7 +5859,7 @@ var URI = __webpack_require__(65);
 var cx = __webpack_require__(14);
 var generateRandomKey = __webpack_require__(10);
 var getSafeBodyFromHTML = __webpack_require__(40);
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 var invariant = __webpack_require__(1);
 var sanitizeDraftText = __webpack_require__(31);
 
@@ -6561,7 +6522,722 @@ module.exports = URI;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule RichTextEditorUtil
+ * @format
+ * 
+ */
+
+
+
+var _extends = _assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _knownListItemDepthCl,
+    _assign = __webpack_require__(3);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var CharacterMetadata = __webpack_require__(4);
+var ContentBlock = __webpack_require__(13);
+var ContentBlockNode = __webpack_require__(6);
+var DefaultDraftBlockRenderMap = __webpack_require__(26);
+var DraftEntity = __webpack_require__(21);
+
+var _require = __webpack_require__(0),
+    List = _require.List,
+    Map = _require.Map,
+    OrderedSet = _require.OrderedSet;
+
+var URI = __webpack_require__(65);
+
+var cx = __webpack_require__(14);
+var generateRandomKey = __webpack_require__(10);
+var getSafeBodyFromHTML = __webpack_require__(40);
+var gkx = __webpack_require__(7);
+
+var experimentalTreeDataSupport = gkx('draft_tree_data_support');
+
+var NBSP = '&nbsp;';
+var SPACE = ' ';
+
+// used for replacing characters in HTML
+var REGEX_CR = new RegExp('\r', 'g');
+var REGEX_LF = new RegExp('\n', 'g');
+var REGEX_NBSP = new RegExp(NBSP, 'g');
+var REGEX_CARRIAGE = new RegExp('&#13;?', 'g');
+var REGEX_ZWS = new RegExp('&#8203;?', 'g');
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
+var boldValues = ['bold', 'bolder', '500', '600', '700', '800', '900'];
+var notBoldValues = ['light', 'lighter', '100', '200', '300', '400'];
+
+var anchorAttr = ['className', 'href', 'rel', 'target', 'title'];
+var imgAttr = ['alt', 'className', 'height', 'src', 'width'];
+
+var knownListItemDepthClasses = (_knownListItemDepthCl = {}, _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth0'), 0), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth1'), 1), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth2'), 2), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth3'), 3), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth4'), 4), _knownListItemDepthCl);
+
+var HTMLTagToInlineStyleMap = Map({
+  b: 'BOLD',
+  code: 'CODE',
+  del: 'STRIKETHROUGH',
+  em: 'ITALIC',
+  i: 'ITALIC',
+  s: 'STRIKETHROUGH',
+  strike: 'STRIKETHROUGH',
+  strong: 'BOLD',
+  u: 'UNDERLINE'
+});
+
+/**
+ * Build a mapping from HTML tags to draftjs block types
+ * out of a BlockRenderMap.
+ *
+ * The BlockTypeMap for the default BlockRenderMap looks like this:
+ *   Map({
+ *     h1: 'header-one',
+ *     h2: 'header-two',
+ *     h3: 'header-three',
+ *     h4: 'header-four',
+ *     h5: 'header-five',
+ *     h6: 'header-six',
+ *     blockquote: 'blockquote',
+ *     figure: 'atomic',
+ *     pre: ['code-block'],
+ *     div: 'unstyled',
+ *     p: 'unstyled',
+ *     li: ['ordered-list-item', 'unordered-list-item'],
+ *   })
+ */
+var buildBlockTypeMap = function buildBlockTypeMap(blockRenderMap) {
+  var blockTypeMap = {};
+
+  blockRenderMap.mapKeys(function (blockType, desc) {
+    var elements = [desc.element];
+    if (desc.aliasedElements !== undefined) {
+      elements.push.apply(elements, desc.aliasedElements);
+    }
+    elements.forEach(function (element) {
+      if (blockTypeMap[element] === undefined) {
+        blockTypeMap[element] = blockType;
+      } else if (typeof blockTypeMap[element] === 'string') {
+        blockTypeMap[element] = [blockTypeMap[element], blockType];
+      } else {
+        blockTypeMap[element].push(blockType);
+      }
+    });
+  });
+
+  return Map(blockTypeMap);
+};
+
+/**
+ * If we're pasting from one DraftEditor to another we can check to see if
+ * existing list item depth classes are being used and preserve this style
+ */
+var getListItemDepth = function getListItemDepth(node) {
+  var depth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  Object.keys(knownListItemDepthClasses).some(function (depthClass) {
+    if (node.classList.contains(depthClass)) {
+      depth = knownListItemDepthClasses[depthClass];
+    }
+  });
+  return depth;
+};
+
+/**
+ * Return true if the provided HTML Element can be used to build a
+ * Draftjs-compatible link.
+ */
+var isValidAnchor = function isValidAnchor(node) {
+  return !!(node instanceof HTMLAnchorElement && node.href && (node.protocol === 'http:' || node.protocol === 'https:' || node.protocol === 'mailto:'));
+};
+
+/**
+ * Return true if the provided HTML Element can be used to build a
+ * Draftjs-compatible image.
+ */
+var isValidImage = function isValidImage(node) {
+  return !!(node instanceof HTMLImageElement && node.attributes.getNamedItem('src') && node.attributes.getNamedItem('src').value);
+};
+
+/**
+ * Determine if a nodeName is a list type, 'ul' or 'ol'
+ */
+var isListNode = function isListNode(nodeName) {
+  return nodeName === 'ul' || nodeName === 'ol';
+};
+
+/**
+ *  ContentBlockConfig is a mutable data structure that holds all
+ *  the information required to build a ContentBlock and an array of
+ *  all the child nodes (childConfigs).
+ *  It is being used a temporary data structure by the
+ *  ContentBlocksBuilder class.
+ */
+
+/**
+ * ContentBlocksBuilder builds a list of ContentBlocks and an Entity Map
+ * out of one (or several) HTMLElement(s).
+ *
+ * The algorithm has two passes: first it builds a tree of ContentBlockConfigs
+ * by walking through the HTML nodes and their children, then it walks the
+ * ContentBlockConfigs tree to compute parents/siblings and create
+ * the actual ContentBlocks.
+ *
+ * Typical usage is:
+ *     new ContentBlocksBuilder()
+ *        .addDOMNode(someHTMLNode)
+ *        .addDOMNode(someOtherHTMLNode)
+ *       .getContentBlocks();
+ *
+ */
+var ContentBlocksBuilder = function () {
+
+  // Map HTML tags to draftjs block types and disambiguation function
+
+
+  // The content blocks generated from the blockConfigs
+
+  // Most of the method in the class depend on the state of the content builder
+  // (i.e. currentBlockType, currentDepth, currentEntity etc.). Though it may
+  // be confusing at first, it made the code simpler than the alternative which
+  // is to pass those values around in every call.
+
+  // The following attributes are used to accumulate text and styles
+  // as we are walking the HTML node tree.
+  function ContentBlocksBuilder(blockTypeMap, disambiguate) {
+    _classCallCheck(this, ContentBlocksBuilder);
+
+    this.clear();
+    this.blockTypeMap = blockTypeMap;
+    this.disambiguate = disambiguate;
+  }
+
+  /**
+   * Clear the internal state of the ContentBlocksBuilder
+   */
+
+
+  // Entity map use to store links and images found in the HTML nodes
+
+
+  // Describes the future ContentState as a tree of content blocks
+
+
+  ContentBlocksBuilder.prototype.clear = function clear() {
+    this.characterList = List();
+    this.blockConfigs = [];
+    this.currentBlockType = 'unstyled';
+    this.currentDepth = -1;
+    this.currentEntity = null;
+    this.currentStyle = OrderedSet();
+    this.currentText = '';
+    this.entityMap = DraftEntity;
+    this.wrapper = 'ul';
+    this.contentBlocks = [];
+  };
+
+  /**
+   * Add an HTMLElement to the ContentBlocksBuilder
+   */
+
+
+  ContentBlocksBuilder.prototype.addDOMNode = function addDOMNode(node) {
+    var _blockConfigs;
+
+    this.contentBlocks = [];
+    // Converts the HTML node to block config
+    (_blockConfigs = this.blockConfigs).push.apply(_blockConfigs, this._toBlockConfigs([node]));
+
+    // There might be some left over text in the builder's
+    // internal state, if so make a ContentBlock out of it.
+    this._trimCurrentText();
+    if (this.currentText !== '') {
+      this.blockConfigs.push(this._makeBlockConfig());
+    }
+
+    // for chaining
+    return this;
+  };
+
+  /**
+   * Return the ContentBlocks and the EntityMap that corresponds
+   * to the previously added HTML nodes.
+   */
+
+
+  ContentBlocksBuilder.prototype.getContentBlocks = function getContentBlocks() {
+    if (this.contentBlocks.length === 0) {
+      if (experimentalTreeDataSupport) {
+        this._toContentBlocks(this.blockConfigs);
+      } else {
+        this._toFlatContentBlocks(this.blockConfigs);
+      }
+    }
+    return {
+      contentBlocks: this.contentBlocks,
+      entityMap: this.entityMap
+    };
+  };
+
+  /**
+   * Add a new inline style to the upcoming nodes.
+   */
+
+
+  ContentBlocksBuilder.prototype.addStyle = function addStyle(inlineStyle) {
+    this.currentStyle = this.currentStyle.add(inlineStyle);
+  };
+
+  /**
+   * Remove a currently applied inline style.
+   */
+
+
+  ContentBlocksBuilder.prototype.removeStyle = function removeStyle(inlineStyle) {
+    this.currentStyle = this.currentStyle.remove(inlineStyle);
+  };
+
+  // ***********************************WARNING******************************
+  // The methods below this line are private - don't call them directly.
+
+  /**
+   * Generate a new ContentBlockConfig out of the current internal state
+   * of the builder, then clears the internal state.
+   */
+
+
+  ContentBlocksBuilder.prototype._makeBlockConfig = function _makeBlockConfig() {
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var key = config.key || generateRandomKey();
+    var block = _extends({
+      key: key,
+      type: this.currentBlockType,
+      text: this.currentText,
+      characterList: this.characterList,
+      depth: Math.max(0, this.currentDepth),
+      parent: null,
+      children: List(),
+      prevSibling: null,
+      nextSibling: null,
+      childConfigs: []
+    }, config);
+    this.characterList = List();
+    this.currentBlockType = 'unstyled';
+    this.currentDepth = -1;
+    this.currentText = '';
+    return block;
+  };
+
+  /**
+   * Converts an array of HTML elements to a multi-root tree of content
+   * block configs. Some text content may be left in the builders internal
+   * state to enable chaining sucessive calls.
+   */
+
+
+  ContentBlocksBuilder.prototype._toBlockConfigs = function _toBlockConfigs(nodes) {
+    var blockConfigs = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      var nodeName = node.nodeName.toLowerCase();
+
+      if (nodeName === 'body' || isListNode(nodeName)) {
+        // body, ol and ul are 'block' type nodes so create a block config
+        // with the text accumulated so far (if any)
+        this._trimCurrentText();
+        if (this.currentText !== '') {
+          blockConfigs.push(this._makeBlockConfig());
+        }
+
+        // body, ol and ul nodes are ignored, but their children are inlined in
+        // the parent block config.
+        var wasCurrentDepth = this.currentDepth;
+        var wasWrapper = this.wrapper;
+        if (isListNode(nodeName)) {
+          this.wrapper = nodeName;
+          if (isListNode(wasWrapper)) {
+            this.currentDepth++;
+          }
+        }
+        blockConfigs.push.apply(blockConfigs, this._toBlockConfigs(Array.from(node.childNodes)));
+        this.currentDepth = wasCurrentDepth;
+        this.wrapper = wasWrapper;
+        continue;
+      }
+
+      var blockType = this.blockTypeMap.get(nodeName);
+      if (blockType !== undefined) {
+        // 'block' type node means we need to create a block config
+        // with the text accumulated so far (if any)
+        this._trimCurrentText();
+        if (this.currentText !== '') {
+          blockConfigs.push(this._makeBlockConfig());
+        }
+
+        var _wasCurrentDepth = this.currentDepth;
+        var _wasWrapper = this.wrapper;
+        this.wrapper = nodeName === 'pre' ? 'pre' : this.wrapper;
+
+        if (typeof blockType !== 'string') {
+          blockType = this.disambiguate(nodeName, this.wrapper) || blockType[0] || 'unstyled';
+        }
+
+        if (!experimentalTreeDataSupport && node instanceof HTMLElement && (blockType === 'unordered-list-item' || blockType === 'ordered-list-item')) {
+          this.currentDepth = getListItemDepth(node, this.currentDepth);
+        }
+
+        var _key = generateRandomKey();
+        var _childConfigs = this._toBlockConfigs(Array.from(node.childNodes));
+        this._trimCurrentText();
+        blockConfigs.push(this._makeBlockConfig({
+          key: _key,
+          childConfigs: _childConfigs,
+          type: blockType
+        }));
+
+        this.currentDepth = _wasCurrentDepth;
+        this.wrapper = _wasWrapper;
+        continue;
+      }
+
+      if (nodeName === '#text') {
+        this._addTextNode(node);
+        continue;
+      }
+
+      if (isValidImage(node)) {
+        this._addImgNode(node);
+        continue;
+      }
+
+      if (isValidAnchor(node)) {
+        this._addAnchorNode(node, blockConfigs);
+        continue;
+      }
+
+      var inlineStyle = HTMLTagToInlineStyleMap.get(nodeName);
+      if (inlineStyle !== undefined) {
+        this.addStyle(inlineStyle);
+      }
+
+      blockConfigs.push.apply(blockConfigs, this._toBlockConfigs(Array.from(node.childNodes)));
+
+      if (inlineStyle !== undefined) {
+        this.removeStyle(inlineStyle);
+      }
+
+      this._updateStyleFromNodeAttributes(node);
+    }
+
+    return blockConfigs;
+  };
+
+  /**
+   * Append a string of text to the internal buffer.
+   */
+
+
+  ContentBlocksBuilder.prototype._appendText = function _appendText(text) {
+    var _characterList;
+
+    this.currentText += text;
+    var characterMetadata = CharacterMetadata.create({
+      style: this.currentStyle,
+      entity: this.currentEntity
+    });
+    this.characterList = (_characterList = this.characterList).push.apply(_characterList, Array(text.length).fill(characterMetadata));
+  };
+
+  /**
+   * Trim the text in the internal buffer.
+   */
+
+
+  ContentBlocksBuilder.prototype._trimCurrentText = function _trimCurrentText() {
+    var l = this.currentText.length;
+    var begin = l - this.currentText.trimLeft().length;
+    var end = this.currentText.trimRight().length;
+
+    // We should not trim whitespaces for which an entity is defined.
+    var entity = this.characterList.findEntry(function (characterMetadata) {
+      return characterMetadata.getEntity() !== null;
+    });
+    begin = entity !== undefined ? Math.min(begin, entity[0]) : begin;
+
+    entity = this.characterList.reverse().findEntry(function (characterMetadata) {
+      return characterMetadata.getEntity() !== null;
+    });
+    end = entity !== undefined ? Math.max(end, l - entity[0]) : end;
+
+    if (begin > end) {
+      this.currentText = '';
+      this.characterList = List();
+    } else {
+      this.currentText = this.currentText.slice(begin, end);
+      this.characterList = this.characterList.slice(begin, end);
+    }
+  };
+
+  /**
+   * Add the content of an HTML text node to the internal state
+   */
+
+
+  ContentBlocksBuilder.prototype._addTextNode = function _addTextNode(node) {
+    var text = node.textContent;
+    var trimmedText = text.trim();
+
+    // If we are not in a pre block and the trimmed content is empty,
+    // normalize to a single space.
+    if (trimmedText === '' && this.wrapper !== 'pre') {
+      text = ' ';
+    }
+
+    if (this.wrapper !== 'pre') {
+      // Can't use empty string because MSWord
+      text = text.replace(REGEX_LF, SPACE);
+    }
+
+    this._appendText(text);
+  };
+
+  /**
+   * Add the content of an HTML img node to the internal state
+   */
+
+
+  ContentBlocksBuilder.prototype._addImgNode = function _addImgNode(node) {
+    if (!(node instanceof HTMLImageElement)) {
+      return;
+    }
+    var image = node;
+    var entityConfig = {};
+
+    imgAttr.forEach(function (attr) {
+      var imageAttribute = image.getAttribute(attr);
+      if (imageAttribute) {
+        entityConfig[attr] = imageAttribute;
+      }
+    });
+
+    // TODO: T15530363 update this when we remove DraftEntity entirely
+    this.currentEntity = this.entityMap.__create('IMAGE', 'MUTABLE', entityConfig);
+
+    // The child text node cannot just have a space or return as content -
+    // we strip those out.
+    // See https://github.com/facebook/draft-js/issues/231 for some context.
+
+    this._appendText('\uD83D\uDCF7');
+    this.currentEntity = null;
+  };
+
+  /**
+   * Add the content of an HTML 'a' node to the internal state. Child nodes
+   * (if any) are converted to Block Configs and appended to the provided
+   * blockConfig array.
+   */
+
+
+  ContentBlocksBuilder.prototype._addAnchorNode = function _addAnchorNode(node, blockConfigs) {
+    // The check has already been made by isValidAnchor but
+    // we have to do it again to keep flow happy.
+    if (!(node instanceof HTMLAnchorElement)) {
+      return;
+    }
+    var anchor = node;
+    var entityConfig = {};
+
+    anchorAttr.forEach(function (attr) {
+      var anchorAttribute = anchor.getAttribute(attr);
+      if (anchorAttribute) {
+        entityConfig[attr] = anchorAttribute;
+      }
+    });
+
+    entityConfig.url = new URI(anchor.href).toString();
+    // TODO: T15530363 update this when we remove DraftEntity completely
+    this.currentEntity = this.entityMap.__create('LINK', 'MUTABLE', entityConfig || {});
+
+    blockConfigs.push.apply(blockConfigs, this._toBlockConfigs(Array.from(node.childNodes)));
+    this.currentEntity = null;
+  };
+
+  /**
+   * Try to guess the inline style of an HTML element based on its css
+   * styles (font-weight, font-style and text-decoration).
+   */
+
+
+  ContentBlocksBuilder.prototype._updateStyleFromNodeAttributes = function _updateStyleFromNodeAttributes(node) {
+    if (!(node instanceof HTMLElement)) {
+      return;
+    }
+
+    var htmlElement = node;
+    var fontWeight = htmlElement.style.fontWeight;
+    var fontStyle = htmlElement.style.fontStyle;
+    var textDecoration = htmlElement.style.textDecoration;
+
+    if (boldValues.indexOf(fontWeight) >= 0) {
+      this.addStyle('BOLD');
+    } else if (notBoldValues.indexOf(fontWeight) >= 0) {
+      this.removeStyle('BOLD');
+    }
+
+    if (fontStyle === 'italic') {
+      this.addStyle('ITALIC');
+    } else if (fontStyle === 'normal') {
+      this.removeStyle('ITALIC');
+    }
+
+    if (textDecoration === 'underline') {
+      this.addStyle('UNDERLINE');
+    }
+    if (textDecoration === 'line-through') {
+      this.addStyle('STRIKETHROUGH');
+    }
+    if (textDecoration === 'none') {
+      this.removeStyle('UNDERLINE');
+      this.removeStyle('STRIKETHROUGH');
+    }
+  };
+
+  /**
+   * Walk the BlockConfig tree, compute parent/children/siblings,
+   * and generate the corresponding ContentBlockNode
+   */
+
+
+  ContentBlocksBuilder.prototype._toContentBlocks = function _toContentBlocks(blockConfigs) {
+    var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+    var l = blockConfigs.length - 1;
+    for (var i = 0; i <= l; i++) {
+      var config = blockConfigs[i];
+      config.parent = parent;
+      config.prevSibling = i > 0 ? blockConfigs[i - 1].key : null;
+      config.nextSibling = i < l ? blockConfigs[i + 1].key : null;
+      config.children = List(config.childConfigs.map(function (child) {
+        return child.key;
+      }));
+      this.contentBlocks.push(new ContentBlockNode(_extends({}, config)));
+      this._toContentBlocks(config.childConfigs, config.key);
+    }
+  };
+
+  // ***********************************************************************
+  // The two methods below are used for backward compatibility when
+  // experimentalTreeDataSupport is disabled.
+
+  /**
+   * Same as _toContentBlocks but replaces nested blocks by their
+   * text content.
+   */
+
+
+  ContentBlocksBuilder.prototype._toFlatContentBlocks = function _toFlatContentBlocks(blockConfigs) {
+    var l = blockConfigs.length - 1;
+    for (var i = 0; i <= l; i++) {
+      var config = blockConfigs[i];
+
+      var _extractTextFromBlock = this._extractTextFromBlockConfigs(config.childConfigs),
+          _text = _extractTextFromBlock.text,
+          _characterList2 = _extractTextFromBlock.characterList;
+
+      this.contentBlocks.push(new ContentBlock(_extends({}, config, {
+        text: config.text + _text,
+        characterList: config.characterList.concat(_characterList2)
+      })));
+    }
+  };
+
+  /**
+   * Extract the text and the associated inline styles form an
+   * array of content block configs.
+   */
+
+
+  ContentBlocksBuilder.prototype._extractTextFromBlockConfigs = function _extractTextFromBlockConfigs(blockConfigs) {
+    var l = blockConfigs.length - 1;
+    var text = '';
+    var characterList = List();
+    for (var i = 0; i <= l; i++) {
+      var config = blockConfigs[i];
+      text += config.text;
+      characterList = characterList.concat(config.characterList);
+      /* $FlowFixMe(>=0.68.0 site=www,mobile) This comment suppresses an error
+       * found when Flow v0.68 was deployed. To see the error delete this
+       * comment and run Flow. */
+      if (text !== '' && config.blockType !== 'unstyled') {
+        text += '\n';
+        characterList = characterList.push(characterList.last());
+      }
+      var _children = this._extractTextFromBlockConfigs(config.childConfigs);
+      text += _children.text;
+      characterList = characterList.concat(_children.characterList);
+    }
+    return { text: text, characterList: characterList };
+  };
+
+  return ContentBlocksBuilder;
+}();
+
+/**
+ * Converts an HTML string to an array of ContentBlocks and an EntityMap
+ * suitable to initialize the internal state of a Draftjs component.
+ */
+
+
+var convertFromHTMLtoContentBlocks = function convertFromHTMLtoContentBlocks(html) {
+  var DOMBuilder = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getSafeBodyFromHTML;
+  var blockRenderMap = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DefaultDraftBlockRenderMap;
+
+  // Be ABSOLUTELY SURE that the dom builder you pass here won't execute
+  // arbitrary code in whatever environment you're running this in. For an
+  // example of how we try to do this in-browser, see getSafeBodyFromHTML.
+
+  // Remove funky characters from the HTML string
+  html = html.trim().replace(REGEX_CR, '').replace(REGEX_NBSP, SPACE).replace(REGEX_CARRIAGE, '').replace(REGEX_ZWS, '');
+
+  // Build a DOM tree out of the HTML string
+  var safeBody = DOMBuilder(html);
+  if (!safeBody) {
+    return null;
+  }
+
+  // Build a BlockTypeMap out of the BlockRenderMap
+  var blockTypeMap = buildBlockTypeMap(blockRenderMap);
+
+  // Select the proper block type for the cases where the blockRenderMap
+  // uses multiple block types for the same html tag.
+  var disambiguate = function disambiguate(tag, wrapper) {
+    if (tag === 'li') {
+      return wrapper === 'ol' ? 'ordered-list-item' : 'unordered-list-item';
+    }
+    return null;
+  };
+
+  return new ContentBlocksBuilder(blockTypeMap, disambiguate).addDOMNode(safeBody).getContentBlocks();
+};
+
+module.exports = convertFromHTMLtoContentBlocks;
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
  * @format
  * 
  */
@@ -6573,7 +7249,7 @@ var EditorState = __webpack_require__(2);
 var SelectionState = __webpack_require__(17);
 
 var adjustBlockDepthForContentState = __webpack_require__(144);
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 var RichTextEditorUtil = {
   currentBlockContainsLink: function currentBlockContainsLink(editorState) {
@@ -6797,7 +7473,7 @@ var RichTextEditorUtil = {
     // If characters are selected, immediately apply or remove the
     // inline style on the document state itself.
     var content = editorState.getCurrentContent();
-    var newContent;
+    var newContent = void 0;
 
     // If the style is already present for the selection range, remove it.
     // Otherwise, apply it.
@@ -6845,7 +7521,7 @@ var RichTextEditorUtil = {
 module.exports = RichTextEditorUtil;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6857,7 +7533,6 @@ module.exports = RichTextEditorUtil;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getDefaultKeyBinding
  * @format
  * 
  */
@@ -6974,7 +7649,7 @@ function getDefaultKeyBinding(e) {
 module.exports = getDefaultKeyBinding;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6986,7 +7661,6 @@ module.exports = getDefaultKeyBinding;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftStringKey
  * @format
  *  strict
  */
@@ -7006,7 +7680,7 @@ var DraftStringKey = {
 module.exports = DraftStringKey;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7018,37 +7692,38 @@ module.exports = DraftStringKey;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule Draft
  * @format
  * 
  */
 
 
 
-var AtomicBlockUtils = __webpack_require__(70);
+var AtomicBlockUtils = __webpack_require__(71);
 var BlockMapBuilder = __webpack_require__(19);
 var CharacterMetadata = __webpack_require__(4);
-var CompositeDraftDecorator = __webpack_require__(85);
+var CompositeDraftDecorator = __webpack_require__(86);
 var ContentBlock = __webpack_require__(13);
 var ContentState = __webpack_require__(30);
 var DefaultDraftBlockRenderMap = __webpack_require__(26);
 var DefaultDraftInlineStyle = __webpack_require__(47);
-var DraftEditor = __webpack_require__(86);
+var DraftEditor = __webpack_require__(87);
 var DraftEditorBlock = __webpack_require__(54);
 var DraftEntity = __webpack_require__(21);
 var DraftModifier = __webpack_require__(5);
 var DraftEntityInstance = __webpack_require__(46);
 var EditorState = __webpack_require__(2);
 var KeyBindingUtil = __webpack_require__(38);
-var RichTextEditorUtil = __webpack_require__(66);
+var RichTextEditorUtil = __webpack_require__(67);
 var SelectionState = __webpack_require__(17);
 
 var convertFromDraftStateToRaw = __webpack_require__(150);
-var convertFromHTMLToContentBlocks = __webpack_require__(64);
 var convertFromRawToDraftState = __webpack_require__(153);
 var generateRandomKey = __webpack_require__(10);
-var getDefaultKeyBinding = __webpack_require__(67);
+var getDefaultKeyBinding = __webpack_require__(68);
 var getVisibleSelectionRect = __webpack_require__(158);
+var gkx = __webpack_require__(7);
+
+var convertFromHTML = gkx('draft_refactored_html_importer') ? __webpack_require__(66) : __webpack_require__(64);
 
 var DraftPublic = {
   Editor: DraftEditor,
@@ -7073,7 +7748,7 @@ var DraftPublic = {
   DefaultDraftBlockRenderMap: DefaultDraftBlockRenderMap,
   DefaultDraftInlineStyle: DefaultDraftInlineStyle,
 
-  convertFromHTML: convertFromHTMLToContentBlocks,
+  convertFromHTML: convertFromHTML,
   convertFromRaw: convertFromRawToDraftState,
   convertToRaw: convertFromDraftStateToRaw,
   genKey: generateRandomKey,
@@ -7084,7 +7759,7 @@ var DraftPublic = {
 module.exports = DraftPublic;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7096,7 +7771,6 @@ module.exports = DraftPublic;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule AtomicBlockUtils
  * @format
  * 
  */
@@ -7117,8 +7791,8 @@ var Immutable = __webpack_require__(0);
 var SelectionState = __webpack_require__(17);
 
 var generateRandomKey = __webpack_require__(10);
-var gkx = __webpack_require__(8);
-var moveBlockInContentState = __webpack_require__(84);
+var gkx = __webpack_require__(7);
+var moveBlockInContentState = __webpack_require__(85);
 
 var experimentalTreeDataSupport = gkx('draft_tree_data_support');
 var ContentBlockRecord = experimentalTreeDataSupport ? ContentBlockNode : ContentBlock;
@@ -7219,7 +7893,7 @@ var AtomicBlockUtils = {
 module.exports = AtomicBlockUtils;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7231,7 +7905,6 @@ module.exports = AtomicBlockUtils;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule ContentStateInlineStyle
  * @format
  * 
  */
@@ -7265,8 +7938,8 @@ function modifyInlineStyle(contentState, selectionState, inlineStyle, addOrRemov
   }).takeUntil(function (_, k) {
     return k === endKey;
   }).concat(Map([[endKey, blockMap.get(endKey)]])).map(function (block, blockKey) {
-    var sliceStart;
-    var sliceEnd;
+    var sliceStart = void 0;
+    var sliceEnd = void 0;
 
     if (startKey === endKey) {
       sliceStart = startOffset;
@@ -7277,7 +7950,7 @@ function modifyInlineStyle(contentState, selectionState, inlineStyle, addOrRemov
     }
 
     var chars = block.getCharacterList();
-    var current;
+    var current = void 0;
     while (sliceStart < sliceEnd) {
       current = chars.get(sliceStart);
       chars = chars.set(sliceStart, addOrRemove ? CharacterMetadata.applyStyle(current, inlineStyle) : CharacterMetadata.removeStyle(current, inlineStyle));
@@ -7297,7 +7970,7 @@ function modifyInlineStyle(contentState, selectionState, inlineStyle, addOrRemov
 module.exports = ContentStateInlineStyle;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7309,7 +7982,6 @@ module.exports = ContentStateInlineStyle;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule applyEntityToContentState
  * @format
  * 
  */
@@ -7318,7 +7990,7 @@ module.exports = ContentStateInlineStyle;
 
 var Immutable = __webpack_require__(0);
 
-var applyEntityToContentBlock = __webpack_require__(73);
+var applyEntityToContentBlock = __webpack_require__(74);
 
 function applyEntityToContentState(contentState, selectionState, entityKey) {
   var blockMap = contentState.getBlockMap();
@@ -7347,7 +8019,7 @@ function applyEntityToContentState(contentState, selectionState, entityKey) {
 module.exports = applyEntityToContentState;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7359,7 +8031,6 @@ module.exports = applyEntityToContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule applyEntityToContentBlock
  * @format
  * 
  */
@@ -7380,7 +8051,7 @@ function applyEntityToContentBlock(contentBlock, start, end, entityKey) {
 module.exports = applyEntityToContentBlock;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7392,16 +8063,15 @@ module.exports = applyEntityToContentBlock;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getCharacterRemovalRange
  * @format
  * 
  */
 
 
 
-var DraftEntitySegments = __webpack_require__(75);
+var DraftEntitySegments = __webpack_require__(76);
 
-var getRangesForDraftEntity = __webpack_require__(76);
+var getRangesForDraftEntity = __webpack_require__(77);
 var invariant = __webpack_require__(1);
 
 /**
@@ -7501,7 +8171,7 @@ function getEntityRemovalRange(entityMap, block, selectionState, direction, enti
 module.exports = getCharacterRemovalRange;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7513,7 +8183,6 @@ module.exports = getCharacterRemovalRange;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEntitySegments
  * @format
  * 
  */
@@ -7558,8 +8227,8 @@ var DraftEntitySegments = {
     });
 
     var segmentStart = entityStart;
-    var segmentEnd;
-    var segment;
+    var segmentEnd = void 0;
+    var segment = void 0;
     var removalStart = null;
     var removalEnd = null;
 
@@ -7606,7 +8275,7 @@ var DraftEntitySegments = {
 module.exports = DraftEntitySegments;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7618,7 +8287,6 @@ module.exports = DraftEntitySegments;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getRangesForDraftEntity
  * @format
  * 
  */
@@ -7651,7 +8319,7 @@ function getRangesForDraftEntity(block, key) {
 module.exports = getRangesForDraftEntity;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7663,7 +8331,6 @@ module.exports = getRangesForDraftEntity;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule insertFragmentIntoContentState
  * @format
  * 
  */
@@ -7908,7 +8575,7 @@ var insertFragmentIntoContentState = function insertFragmentIntoContentState(con
 module.exports = insertFragmentIntoContentState;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7920,7 +8587,6 @@ module.exports = insertFragmentIntoContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule insertTextIntoContentState
  * @format
  * 
  */
@@ -7968,7 +8634,7 @@ function insertTextIntoContentState(contentState, selectionState, text, characte
 module.exports = insertTextIntoContentState;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7980,7 +8646,6 @@ module.exports = insertTextIntoContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule modifyBlockForContentState
  * @format
  * 
  */
@@ -8012,7 +8677,7 @@ function modifyBlockForContentState(contentState, selectionState, operation) {
 module.exports = modifyBlockForContentState;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8024,7 +8689,6 @@ module.exports = modifyBlockForContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule removeRangeFromContentState
  * @format
  * 
  */
@@ -8324,7 +8988,7 @@ var removeFromList = function removeFromList(targetList, startOffset, endOffset)
 module.exports = removeRangeFromContentState;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8336,7 +9000,6 @@ module.exports = removeRangeFromContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule splitBlockInContentState
  * @format
  * 
  */
@@ -8461,7 +9124,7 @@ var splitBlockInContentState = function splitBlockInContentState(contentState, s
 module.exports = splitBlockInContentState;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8473,7 +9136,6 @@ module.exports = splitBlockInContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule EditorBidiService
  * @format
  * 
  */
@@ -8481,14 +9143,14 @@ module.exports = splitBlockInContentState;
 
 
 var Immutable = __webpack_require__(0);
-var UnicodeBidiService = __webpack_require__(83);
+var UnicodeBidiService = __webpack_require__(84);
 
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 var OrderedMap = Immutable.OrderedMap;
 
 
-var bidiService;
+var bidiService = void 0;
 
 var EditorBidiService = {
   getDirectionMap: function getDirectionMap(content, prevBidiMap) {
@@ -8515,7 +9177,7 @@ var EditorBidiService = {
 module.exports = EditorBidiService;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8619,7 +9281,7 @@ var UnicodeBidiService = function () {
 module.exports = UnicodeBidiService;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8631,7 +9293,6 @@ module.exports = UnicodeBidiService;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule moveBlockInContentState
  * @format
  * 
  */
@@ -8818,7 +9479,7 @@ var moveBlockInContentState = function moveBlockInContentState(contentState, blo
 module.exports = moveBlockInContentState;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8830,7 +9491,6 @@ module.exports = moveBlockInContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule CompositeDraftDecorator
  * @format
  * 
  */
@@ -8938,7 +9598,7 @@ function occupySlice(targetArr, start, end, componentKey) {
 module.exports = CompositeDraftDecorator;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8950,7 +9610,6 @@ module.exports = CompositeDraftDecorator;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditor.react
  * @format
  * 
  * @preventMunge
@@ -8970,10 +9629,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var DefaultDraftBlockRenderMap = __webpack_require__(26);
 var DefaultDraftInlineStyle = __webpack_require__(47);
-var DraftEditorCompositionHandler = __webpack_require__(87);
-var DraftEditorContents = __webpack_require__(88);
-var DraftEditorDragHandler = __webpack_require__(111);
-var DraftEditorEditHandler = __webpack_require__(114);
+var DraftEditorCompositionHandler = __webpack_require__(88);
+var DraftEditorContents = __webpack_require__(89);
+var DraftEditorDragHandler = __webpack_require__(112);
+var DraftEditorEditHandler = __webpack_require__(115);
 var DraftEditorPlaceholder = __webpack_require__(148);
 var DraftODS = __webpack_require__(149);
 var EditorState = __webpack_require__(2);
@@ -8986,11 +9645,11 @@ var UserAgent = __webpack_require__(11);
 var cx = __webpack_require__(14);
 var emptyFunction = __webpack_require__(29);
 var generateRandomKey = __webpack_require__(10);
-var getDefaultKeyBinding = __webpack_require__(67);
+var getDefaultKeyBinding = __webpack_require__(68);
 var getScrollPosition = __webpack_require__(28);
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 var invariant = __webpack_require__(1);
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 var isIE = UserAgent.isBrowser('IE');
 
@@ -9515,7 +10174,7 @@ DraftEditor.defaultProps = {
 module.exports = DraftEditor;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9527,7 +10186,6 @@ module.exports = DraftEditor;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorCompositionHandler
  * @format
  * 
  */
@@ -9539,7 +10197,7 @@ var EditorState = __webpack_require__(2);
 var Keys = __webpack_require__(33);
 
 var getEntityKeyForSelection = __webpack_require__(34);
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 var isEventHandled = __webpack_require__(22);
 var isSelectionAtLeafStart = __webpack_require__(48);
 
@@ -9747,7 +10405,7 @@ var DraftEditorCompositionHandler = {
 module.exports = DraftEditorCompositionHandler;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9759,21 +10417,20 @@ module.exports = DraftEditorCompositionHandler;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorContents.react
  * @format
  * 
  */
 
 
 
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 
 var experimentalTreeDataSupport = gkx('draft_tree_data_support');
 
-module.exports = experimentalTreeDataSupport ? __webpack_require__(89) : __webpack_require__(109);
+module.exports = experimentalTreeDataSupport ? __webpack_require__(90) : __webpack_require__(110);
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9785,7 +10442,6 @@ module.exports = experimentalTreeDataSupport ? __webpack_require__(89) : __webpa
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorContentsExperimental.react
  * @format
  * 
  *
@@ -9807,12 +10463,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DraftEditorBlockNode = __webpack_require__(90);
+var DraftEditorBlockNode = __webpack_require__(91);
 var DraftOffsetKey = __webpack_require__(15);
 var EditorState = __webpack_require__(2);
 var React = __webpack_require__(9);
 
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 /**
  * `DraftEditorContents` is the container component for all block components
@@ -9959,7 +10615,7 @@ var DraftEditorContentsExperimental = function (_React$Component) {
 module.exports = DraftEditorContentsExperimental;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9971,7 +10627,6 @@ module.exports = DraftEditorContentsExperimental;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorBlockNode.react
  * @format
  * 
  *
@@ -9993,7 +10648,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DraftEditorNode = __webpack_require__(91);
+var DraftEditorNode = __webpack_require__(92);
 var DraftOffsetKey = __webpack_require__(15);
 var EditorState = __webpack_require__(2);
 var Immutable = __webpack_require__(0);
@@ -10293,7 +10948,7 @@ var DraftEditorBlockNode = function (_React$Component) {
 module.exports = DraftEditorBlockNode;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10305,7 +10960,6 @@ module.exports = DraftEditorBlockNode;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorNode.react
  * @format
  * 
  *
@@ -10321,7 +10975,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DraftEditorDecoratedLeaves = __webpack_require__(92);
+var DraftEditorDecoratedLeaves = __webpack_require__(93);
 var DraftEditorLeaf = __webpack_require__(49);
 var DraftOffsetKey = __webpack_require__(15);
 var Immutable = __webpack_require__(0);
@@ -10417,7 +11071,7 @@ var DraftEditorNode = function (_React$Component) {
 module.exports = DraftEditorNode;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10429,7 +11083,6 @@ module.exports = DraftEditorNode;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorDecoratedLeaves.react
  * @format
  * 
  *
@@ -10506,7 +11159,7 @@ var DraftEditorDecoratedLeaves = function (_React$Component) {
 module.exports = DraftEditorDecoratedLeaves;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10518,7 +11171,6 @@ module.exports = DraftEditorDecoratedLeaves;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorTextNode.react
  * @format
  * 
  */
@@ -10627,7 +11279,7 @@ var DraftEditorTextNode = function (_React$Component) {
 module.exports = DraftEditorTextNode;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10652,7 +11304,7 @@ module.exports = DraftEditorTextNode;
 
 
 
-var UAParser = __webpack_require__(95);
+var UAParser = __webpack_require__(96);
 
 var UNKNOWN = 'Unknown';
 
@@ -10713,7 +11365,7 @@ var uaData = {
 module.exports = uaData;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -11756,7 +12408,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
         exports.UAParser = UAParser;
     } else {
         // requirejs env (optional)
-        if ("function" === FUNC_TYPE && __webpack_require__(96)) {
+        if ("function" === FUNC_TYPE && __webpack_require__(97)) {
             !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
                 return UAParser;
             }).call(exports, __webpack_require__, exports, module),
@@ -11792,7 +12444,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -11801,7 +12453,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12187,7 +12839,7 @@ var VersionRange = {
 module.exports = VersionRange;
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12241,7 +12893,7 @@ function mapObject(object, callback, context) {
 module.exports = mapObject;
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12274,7 +12926,7 @@ function memoizeStringOnly(callback) {
 module.exports = memoizeStringOnly;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12286,7 +12938,6 @@ module.exports = memoizeStringOnly;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule setDraftEditorSelection
  * @format
  * 
  */
@@ -12526,7 +13177,7 @@ module.exports = setDraftEditorSelection;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12541,7 +13192,7 @@ module.exports = setDraftEditorSelection;
  * @typechecks
  */
 
-var isNode = __webpack_require__(102);
+var isNode = __webpack_require__(103);
 
 /**
  * @param {*} object The object to check.
@@ -12554,7 +13205,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12582,7 +13233,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12597,8 +13248,8 @@ module.exports = isNode;
  * @typechecks
  */
 
-var camelize = __webpack_require__(104);
-var hyphenate = __webpack_require__(105);
+var camelize = __webpack_require__(105);
+var hyphenate = __webpack_require__(106);
 
 function asString(value) /*?string*/{
   return value == null ? value : String(value);
@@ -12639,7 +13290,7 @@ function getStyleProperty( /*DOMNode*/node, /*string*/name) /*?string*/{
 module.exports = getStyleProperty;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12674,7 +13325,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12710,7 +13361,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12764,7 +13415,7 @@ function getElementRect(elem) {
 module.exports = getElementRect;
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12801,7 +13452,7 @@ function getDocumentScrollElement(doc) {
 module.exports = getDocumentScrollElement;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12843,7 +13494,7 @@ function getUnboundedScrollPosition(scrollable) {
 module.exports = getUnboundedScrollPosition;
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12855,7 +13506,6 @@ module.exports = getUnboundedScrollPosition;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorContents-core.react
  * @format
  * 
  */
@@ -12878,8 +13528,8 @@ var EditorState = __webpack_require__(2);
 var React = __webpack_require__(9);
 
 var cx = __webpack_require__(14);
-var joinClasses = __webpack_require__(110);
-var nullthrows = __webpack_require__(7);
+var joinClasses = __webpack_require__(111);
+var nullthrows = __webpack_require__(8);
 
 /**
  * Provide default styling for list items. This way, lists will be styled with
@@ -12896,7 +13546,7 @@ var getListItemClasses = function getListItemClasses(type, depth, shouldResetCou
     'public/DraftStyleDefault/depth1': depth === 1,
     'public/DraftStyleDefault/depth2': depth === 2,
     'public/DraftStyleDefault/depth3': depth === 3,
-    'public/DraftStyleDefault/depth4': depth === 4,
+    'public/DraftStyleDefault/depth4': depth >= 4,
     'public/DraftStyleDefault/listLTR': direction === 'LTR',
     'public/DraftStyleDefault/listRTL': direction === 'RTL'
   });
@@ -13101,7 +13751,7 @@ var DraftEditorContents = function (_React$Component) {
 module.exports = DraftEditorContents;
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13144,7 +13794,7 @@ function joinClasses(className /*, ... */) {
 module.exports = joinClasses;
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13156,7 +13806,6 @@ module.exports = joinClasses;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorDragHandler
  * @format
  * 
  */
@@ -13171,7 +13820,7 @@ var findAncestorOffsetKey = __webpack_require__(37);
 var getTextContentFromFiles = __webpack_require__(57);
 var getUpdatedSelectionState = __webpack_require__(58);
 var isEventHandled = __webpack_require__(22);
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 /**
  * Get a SelectionState for the supplied mouse event.
@@ -13267,7 +13916,7 @@ function insertTextAtSelection(editorState, selection, text) {
 module.exports = DraftEditorDragHandler;
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13299,7 +13948,7 @@ function getParts(mimeString) {
 module.exports = PhotosMimeType;
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13429,7 +14078,7 @@ function createArrayFromMixed(obj) {
 module.exports = createArrayFromMixed;
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13441,24 +14090,23 @@ module.exports = createArrayFromMixed;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorEditHandler
  * @format
  * 
  */
 
 
 
-var onBeforeInput = __webpack_require__(115);
-var onBlur = __webpack_require__(119);
-var onCompositionStart = __webpack_require__(120);
-var onCopy = __webpack_require__(121);
-var onCut = __webpack_require__(122);
-var onDragOver = __webpack_require__(123);
-var onDragStart = __webpack_require__(124);
-var onFocus = __webpack_require__(125);
-var onInput = __webpack_require__(126);
-var onKeyDown = __webpack_require__(127);
-var onPaste = __webpack_require__(141);
+var onBeforeInput = __webpack_require__(116);
+var onBlur = __webpack_require__(120);
+var onCompositionStart = __webpack_require__(121);
+var onCopy = __webpack_require__(122);
+var onCut = __webpack_require__(123);
+var onDragOver = __webpack_require__(124);
+var onDragStart = __webpack_require__(125);
+var onFocus = __webpack_require__(126);
+var onInput = __webpack_require__(127);
+var onKeyDown = __webpack_require__(128);
+var onPaste = __webpack_require__(142);
 var onSelect = __webpack_require__(146);
 
 var DraftEditorEditHandler = {
@@ -13479,7 +14127,7 @@ var DraftEditorEditHandler = {
 module.exports = DraftEditorEditHandler;
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13491,7 +14139,6 @@ module.exports = DraftEditorEditHandler;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnBeforeInput
  * @format
  * 
  */
@@ -13504,10 +14151,11 @@ var EditorState = __webpack_require__(2);
 var UserAgent = __webpack_require__(11);
 
 var getEntityKeyForSelection = __webpack_require__(34);
+var gkx = __webpack_require__(7);
 var isEventHandled = __webpack_require__(22);
 var isSelectionAtLeafStart = __webpack_require__(48);
-var nullthrows = __webpack_require__(7);
-var setImmediate = __webpack_require__(116);
+var nullthrows = __webpack_require__(8);
+var setImmediate = __webpack_require__(117);
 
 // When nothing is focused, Firefox regards two characters, `'` and `/`, as
 // commands that should open and focus the "quickfind" search bar. This should
@@ -13616,12 +14264,67 @@ function editOnBeforeInput(editor, e) {
     }
   }
   if (!mustPreventNative) {
-    // Check the old and new "fingerprints" of the current block to determine
-    // whether this insertion requires any addition or removal of text nodes,
-    // in which case we would prevent the native character insertion.
-    var originalFingerprint = BlockTree.getFingerprint(editorState.getBlockTree(anchorKey));
-    var newFingerprint = BlockTree.getFingerprint(newEditorState.getBlockTree(anchorKey));
-    mustPreventNative = originalFingerprint !== newFingerprint;
+    if (gkx('draft_improved_decorator_fingerprint')) {
+      // Let's say we have a decorator that highlights hashtags. In many cases
+      // we need to prevent native behavior and rerender ourselves --
+      // particularly, any case *except* where the inserted characters end up
+      // anywhere except exactly where you put them.
+      //
+      // Using [] to denote a decorated leaf, some examples:
+      //
+      // 1. 'hi #' and append 'f'
+      // desired rendering: 'hi [#f]'
+      // native rendering would be: 'hi #f' (incorrect)
+      //
+      // 2. 'x [#foo]' and insert '#' before 'f'
+      // desired rendering: 'x #[#foo]'
+      // native rendering would be: 'x [##foo]' (incorrect)
+      //
+      // 3. '[#foobar]' and insert ' ' between 'foo' and 'bar'
+      // desired rendering: '[#foo] bar'
+      // native rendering would be: '[#foo bar]' (incorrect)
+      //
+      // 4. '[#foo]' and delete '#' [won't use this beforeinput codepath though]
+      // desired rendering: 'foo'
+      // native rendering would be: '[foo]' (incorrect)
+      //
+      // 5. '[#foo]' and append 'b'
+      // desired rendering: '[#foob]'
+      // native rendering would be: '[#foob]' (native insertion is OK here)
+      //
+      // It is safe to allow native insertion if and only if the full list of
+      // decorator ranges matches what we expect native insertion to give. We
+      // don't need to compare the content because the only possible mutation
+      // to consider here is inserting plain text and decorators can't affect
+      // text content.
+      var oldBlockTree = editorState.getBlockTree(anchorKey);
+      var newBlockTree = newEditorState.getBlockTree(anchorKey);
+      mustPreventNative = oldBlockTree.size !== newBlockTree.size || oldBlockTree.zip(newBlockTree).some(function (_ref) {
+        var oldLeafSet = _ref[0],
+            newLeafSet = _ref[1];
+
+        // selectionStart is guaranteed to be selectionEnd here
+        var oldStart = oldLeafSet.get('start');
+        var adjustedStart = oldStart + (oldStart >= selectionStart ? chars.length : 0);
+        var oldEnd = oldLeafSet.get('end');
+        var adjustedEnd = oldEnd + (oldEnd >= selectionStart ? chars.length : 0);
+        return (
+          // Different decorators
+          oldLeafSet.get('decoratorKey') !== newLeafSet.get('decoratorKey') ||
+          // Different number of inline styles
+          oldLeafSet.get('leaves').size !== newLeafSet.get('leaves').size ||
+          // Different effective decorator position
+          adjustedStart !== newLeafSet.get('start') || adjustedEnd !== newLeafSet.get('end')
+        );
+      });
+    } else {
+      // Check the old and new "fingerprints" of the current block to determine
+      // whether this insertion requires any addition or removal of text nodes,
+      // in which case we would prevent the native character insertion.
+      var originalFingerprint = BlockTree.getFingerprint(editorState.getBlockTree(anchorKey));
+      var newFingerprint = BlockTree.getFingerprint(newEditorState.getBlockTree(anchorKey));
+      mustPreventNative = originalFingerprint !== newFingerprint;
+    }
   }
   if (!mustPreventNative) {
     mustPreventNative = mustPreventDefaultForCharacter(chars);
@@ -13657,7 +14360,7 @@ module.exports = editOnBeforeInput;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13674,12 +14377,12 @@ module.exports = editOnBeforeInput;
 // setimmediate adds setImmediate to the global. We want to make sure we export
 // the actual function.
 
-__webpack_require__(117);
+__webpack_require__(118);
 module.exports = global.setImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -13869,10 +14572,10 @@ module.exports = global.setImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12), __webpack_require__(118)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12), __webpack_require__(119)))
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -14062,7 +14765,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14074,7 +14777,6 @@ process.umask = function() { return 0; };
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnBlur
  * @format
  * 
  */
@@ -14118,7 +14820,7 @@ module.exports = editOnBlur;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14130,7 +14832,6 @@ module.exports = editOnBlur;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnCompositionStart
  * @format
  * 
  */
@@ -14153,7 +14854,7 @@ function editOnCompositionStart(editor, e) {
 module.exports = editOnCompositionStart;
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14165,7 +14866,6 @@ module.exports = editOnCompositionStart;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnCopy
  * @format
  * 
  */
@@ -14195,7 +14895,7 @@ function editOnCopy(editor, e) {
 module.exports = editOnCopy;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14207,7 +14907,6 @@ module.exports = editOnCopy;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnCut
  * @format
  * 
  */
@@ -14270,7 +14969,7 @@ function removeFragment(editorState) {
 module.exports = editOnCut;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14282,7 +14981,6 @@ module.exports = editOnCut;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnDragOver
  * @format
  * 
  */
@@ -14301,7 +14999,7 @@ function editOnDragOver(editor, e) {
 module.exports = editOnDragOver;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14313,7 +15011,6 @@ module.exports = editOnDragOver;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnDragStart
  * @format
  * 
  */
@@ -14331,7 +15028,7 @@ function editOnDragStart(editor) {
 module.exports = editOnDragStart;
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14343,7 +15040,6 @@ module.exports = editOnDragStart;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnFocus
  * @format
  * 
  */
@@ -14383,7 +15079,7 @@ function editOnFocus(editor, e) {
 module.exports = editOnFocus;
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14395,7 +15091,6 @@ module.exports = editOnFocus;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnInput
  * @format
  * 
  */
@@ -14408,8 +15103,8 @@ var EditorState = __webpack_require__(2);
 var UserAgent = __webpack_require__(11);
 
 var findAncestorOffsetKey = __webpack_require__(37);
-var gkx = __webpack_require__(8);
-var nullthrows = __webpack_require__(7);
+var gkx = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 var isGecko = UserAgent.isEngine('Gecko');
 
@@ -14522,7 +15217,10 @@ function editOnInput(editor) {
 
   var newContent = DraftModifier.replaceText(content, targetRange, domText, block.getInlineStyleAt(start), preserveEntity ? block.getEntityAt(start) : null);
 
-  var anchorOffset, focusOffset, startOffset, endOffset;
+  var anchorOffset = void 0,
+      focusOffset = void 0,
+      startOffset = void 0,
+      endOffset = void 0;
 
   if (isGecko) {
     // Firefox selection does not change while the context menu is open, so
@@ -14562,7 +15260,7 @@ module.exports = editOnInput;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14574,7 +15272,6 @@ module.exports = editOnInput;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnKeyDown
  * @format
  * 
  */
@@ -14585,20 +15282,20 @@ var DraftModifier = __webpack_require__(5);
 var EditorState = __webpack_require__(2);
 var KeyBindingUtil = __webpack_require__(38);
 var Keys = __webpack_require__(33);
-var SecondaryClipboard = __webpack_require__(128);
+var SecondaryClipboard = __webpack_require__(129);
 var UserAgent = __webpack_require__(11);
 
 var isEventHandled = __webpack_require__(22);
-var keyCommandBackspaceToStartOfLine = __webpack_require__(129);
-var keyCommandBackspaceWord = __webpack_require__(131);
-var keyCommandDeleteWord = __webpack_require__(133);
-var keyCommandInsertNewline = __webpack_require__(134);
-var keyCommandMoveSelectionToEndOfBlock = __webpack_require__(135);
-var keyCommandMoveSelectionToStartOfBlock = __webpack_require__(136);
-var keyCommandPlainBackspace = __webpack_require__(137);
-var keyCommandPlainDelete = __webpack_require__(138);
-var keyCommandTransposeCharacters = __webpack_require__(139);
-var keyCommandUndo = __webpack_require__(140);
+var keyCommandBackspaceToStartOfLine = __webpack_require__(130);
+var keyCommandBackspaceWord = __webpack_require__(132);
+var keyCommandDeleteWord = __webpack_require__(134);
+var keyCommandInsertNewline = __webpack_require__(135);
+var keyCommandMoveSelectionToEndOfBlock = __webpack_require__(136);
+var keyCommandMoveSelectionToStartOfBlock = __webpack_require__(137);
+var keyCommandPlainBackspace = __webpack_require__(138);
+var keyCommandPlainDelete = __webpack_require__(139);
+var keyCommandTransposeCharacters = __webpack_require__(140);
+var keyCommandUndo = __webpack_require__(141);
 
 var isOptionKeyCommand = KeyBindingUtil.isOptionKeyCommand;
 
@@ -14742,7 +15439,7 @@ function editOnKeyDown(editor, e) {
 module.exports = editOnKeyDown;
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14754,7 +15451,6 @@ module.exports = editOnKeyDown;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule SecondaryClipboard
  * @format
  * 
  */
@@ -14765,7 +15461,7 @@ var DraftModifier = __webpack_require__(5);
 var EditorState = __webpack_require__(2);
 
 var getContentStateFragment = __webpack_require__(24);
-var nullthrows = __webpack_require__(7);
+var nullthrows = __webpack_require__(8);
 
 var clipboard = null;
 
@@ -14818,7 +15514,7 @@ var SecondaryClipboard = {
 module.exports = SecondaryClipboard;
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14830,7 +15526,6 @@ module.exports = SecondaryClipboard;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandBackspaceToStartOfLine
  * @format
  * 
  */
@@ -14839,7 +15534,7 @@ module.exports = SecondaryClipboard;
 
 var EditorState = __webpack_require__(2);
 
-var expandRangeToStartOfLine = __webpack_require__(130);
+var expandRangeToStartOfLine = __webpack_require__(131);
 var getDraftEditorSelectionWithNodes = __webpack_require__(61);
 var moveSelectionBackward = __webpack_require__(39);
 var removeTextWithStrategy = __webpack_require__(23);
@@ -14869,7 +15564,7 @@ module.exports = keyCommandBackspaceToStartOfLine;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14883,7 +15578,6 @@ module.exports = keyCommandBackspaceToStartOfLine;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule expandRangeToStartOfLine
  * @format
  * 
  */
@@ -15028,8 +15722,9 @@ function expandRangeToStartOfLine(range) {
 
   do {
     var nodeValue = currentContainer.nodeValue;
+    var ii = maxIndexToConsider;
 
-    for (var ii = maxIndexToConsider; ii >= 0; ii--) {
+    for (; ii >= 0; ii--) {
       if (nodeValue != null && ii > 0 && UnicodeUtils.isSurrogatePair(nodeValue, ii - 1)) {
         // We're in the middle of a surrogate pair -- skip over so we never
         // return a range with an endpoint in the middle of a code point.
@@ -15067,7 +15762,7 @@ function expandRangeToStartOfLine(range) {
 module.exports = expandRangeToStartOfLine;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15079,7 +15774,6 @@ module.exports = expandRangeToStartOfLine;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandBackspaceWord
  * @format
  * 
  */
@@ -15121,7 +15815,7 @@ function keyCommandBackspaceWord(editorState) {
 module.exports = keyCommandBackspaceWord;
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15162,7 +15856,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15174,7 +15868,6 @@ module.exports = {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandDeleteWord
  * @format
  * 
  */
@@ -15214,7 +15907,7 @@ function keyCommandDeleteWord(editorState) {
 module.exports = keyCommandDeleteWord;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15226,7 +15919,6 @@ module.exports = keyCommandDeleteWord;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandInsertNewline
  * @format
  * 
  */
@@ -15244,7 +15936,7 @@ function keyCommandInsertNewline(editorState) {
 module.exports = keyCommandInsertNewline;
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15256,7 +15948,6 @@ module.exports = keyCommandInsertNewline;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandMoveSelectionToEndOfBlock
  * @format
  * 
  */
@@ -15288,7 +15979,7 @@ function keyCommandMoveSelectionToEndOfBlock(editorState) {
 module.exports = keyCommandMoveSelectionToEndOfBlock;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15300,7 +15991,6 @@ module.exports = keyCommandMoveSelectionToEndOfBlock;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandMoveSelectionToStartOfBlock
  * @format
  * 
  */
@@ -15332,7 +16022,7 @@ function keyCommandMoveSelectionToStartOfBlock(editorState) {
 module.exports = keyCommandMoveSelectionToStartOfBlock;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15344,7 +16034,6 @@ module.exports = keyCommandMoveSelectionToStartOfBlock;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandPlainBackspace
  * @format
  * 
  */
@@ -15383,7 +16072,7 @@ function keyCommandPlainBackspace(editorState) {
 module.exports = keyCommandPlainBackspace;
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15395,7 +16084,6 @@ module.exports = keyCommandPlainBackspace;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandPlainDelete
  * @format
  * 
  */
@@ -15435,7 +16123,7 @@ function keyCommandPlainDelete(editorState) {
 module.exports = keyCommandPlainDelete;
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15447,7 +16135,6 @@ module.exports = keyCommandPlainDelete;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandTransposeCharacters
  * @format
  * 
  */
@@ -15485,8 +16172,8 @@ function keyCommandTransposeCharacters(editorState) {
     return editorState;
   }
 
-  var removalRange;
-  var finalSelection;
+  var removalRange = void 0;
+  var finalSelection = void 0;
 
   if (offset === length) {
     // The cursor is at the end of the block. Swap the last two characters.
@@ -15520,7 +16207,7 @@ function keyCommandTransposeCharacters(editorState) {
 module.exports = keyCommandTransposeCharacters;
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15532,7 +16219,6 @@ module.exports = keyCommandTransposeCharacters;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule keyCommandUndo
  * @format
  * 
  */
@@ -15575,7 +16261,7 @@ function keyCommandUndo(e, editorState, updateFn) {
 module.exports = keyCommandUndo;
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15587,7 +16273,6 @@ module.exports = keyCommandUndo;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnPaste
  * @format
  * 
  */
@@ -15598,9 +16283,9 @@ var BlockMapBuilder = __webpack_require__(19);
 var CharacterMetadata = __webpack_require__(4);
 var DataTransfer = __webpack_require__(55);
 var DraftModifier = __webpack_require__(5);
-var DraftPasteProcessor = __webpack_require__(142);
+var DraftPasteProcessor = __webpack_require__(143);
 var EditorState = __webpack_require__(2);
-var RichTextEditorUtil = __webpack_require__(66);
+var RichTextEditorUtil = __webpack_require__(67);
 
 var getEntityKeyForSelection = __webpack_require__(34);
 var getTextContentFromFiles = __webpack_require__(57);
@@ -15746,7 +16431,7 @@ function areTextBlocksAndClipboardEqual(textBlocks, blockMap) {
 module.exports = editOnPaste;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15758,7 +16443,6 @@ module.exports = editOnPaste;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftPasteProcessor
  * @format
  * 
  */
@@ -15775,10 +16459,10 @@ var ContentBlockNode = __webpack_require__(6);
 var Immutable = __webpack_require__(0);
 
 var convertFromHTMLtoContentBlocksClassic = __webpack_require__(64);
-var convertFromHTMLtoContentBlocksNew = __webpack_require__(143);
+var convertFromHTMLtoContentBlocksNew = __webpack_require__(66);
 var generateRandomKey = __webpack_require__(10);
 var getSafeBodyFromHTML = __webpack_require__(40);
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 var sanitizeDraftText = __webpack_require__(31);
 
 var List = Immutable.List,
@@ -15829,711 +16513,6 @@ var DraftPasteProcessor = {
 module.exports = DraftPasteProcessor;
 
 /***/ }),
-/* 143 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule convertFromHTMLToContentBlocks2
- * @format
- * 
- */
-
-
-
-var _extends = _assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _knownListItemDepthCl,
-    _assign = __webpack_require__(3);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var CharacterMetadata = __webpack_require__(4);
-var ContentBlock = __webpack_require__(13);
-var ContentBlockNode = __webpack_require__(6);
-var DraftEntity = __webpack_require__(21);
-var DefaultDraftBlockRenderMap = __webpack_require__(26);
-var cx = __webpack_require__(14);
-var generateRandomKey = __webpack_require__(10);
-var getSafeBodyFromHTML = __webpack_require__(40);
-var gkx = __webpack_require__(8);
-
-var _require = __webpack_require__(0),
-    List = _require.List,
-    Map = _require.Map,
-    OrderedSet = _require.OrderedSet;
-
-var URI = __webpack_require__(65);
-
-var experimentalTreeDataSupport = gkx('draft_tree_data_support');
-
-var NBSP = '&nbsp;';
-var SPACE = ' ';
-
-// used for replacing characters in HTML
-var REGEX_CR = new RegExp('\r', 'g');
-var REGEX_LF = new RegExp('\n', 'g');
-var REGEX_NBSP = new RegExp(NBSP, 'g');
-var REGEX_CARRIAGE = new RegExp('&#13;?', 'g');
-var REGEX_ZWS = new RegExp('&#8203;?', 'g');
-
-// https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
-var boldValues = ['bold', 'bolder', '500', '600', '700', '800', '900'];
-var notBoldValues = ['light', 'lighter', '100', '200', '300', '400'];
-
-var anchorAttr = ['className', 'href', 'rel', 'target', 'title'];
-var imgAttr = ['alt', 'className', 'height', 'src', 'width'];
-
-var knownListItemDepthClasses = (_knownListItemDepthCl = {}, _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth0'), 0), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth1'), 1), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth2'), 2), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth3'), 3), _defineProperty(_knownListItemDepthCl, cx('public/DraftStyleDefault/depth4'), 4), _knownListItemDepthCl);
-
-var HTMLTagToInlineStyleMap = Map({
-  b: 'BOLD',
-  code: 'CODE',
-  del: 'STRIKETHROUGH',
-  em: 'ITALIC',
-  i: 'ITALIC',
-  s: 'STRIKETHROUGH',
-  strike: 'STRIKETHROUGH',
-  strong: 'BOLD',
-  u: 'UNDERLINE'
-});
-
-/**
- * Build a mapping from HTML tags to draftjs block types
- * out of a BlockRenderMap.
- *
- * The BlockTypeMap for the default BlockRenderMap looks like this:
- *   Map({
- *     h1: 'header-one',
- *     h2: 'header-two',
- *     h3: 'header-three',
- *     h4: 'header-four',
- *     h5: 'header-five',
- *     h6: 'header-six',
- *     blockquote: 'blockquote',
- *     figure: 'atomic',
- *     pre: ['code-block'],
- *     div: 'unstyled',
- *     p: 'unstyled',
- *     li: ['ordered-list-item', 'unordered-list-item'],
- *   })
- */
-var buildBlockTypeMap = function buildBlockTypeMap(blockRenderMap) {
-  var blockTypeMap = {};
-
-  blockRenderMap.mapKeys(function (blockType, desc) {
-    var elements = [desc.element];
-    if (desc.aliasedElements !== undefined) {
-      elements.push.apply(elements, desc.aliasedElements);
-    }
-    elements.forEach(function (element) {
-      if (blockTypeMap[element] === undefined) {
-        blockTypeMap[element] = blockType;
-      } else if (typeof blockTypeMap[element] === 'string') {
-        blockTypeMap[element] = [blockTypeMap[element], blockType];
-      } else {
-        blockTypeMap[element].push(blockType);
-      }
-    });
-  });
-
-  return Map(blockTypeMap);
-};
-
-/**
- * If we're pasting from one DraftEditor to another we can check to see if
- * existing list item depth classes are being used and preserve this style
- */
-var getListItemDepth = function getListItemDepth(node) {
-  var depth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-  Object.keys(knownListItemDepthClasses).some(function (depthClass) {
-    if (node.classList.contains(depthClass)) {
-      depth = knownListItemDepthClasses[depthClass];
-    }
-  });
-  return depth;
-};
-
-/**
- * Return true if the provided HTML Element can be used to build a
- * Draftjs-compatible link.
- */
-var isValidAnchor = function isValidAnchor(node) {
-  return !!(node instanceof HTMLAnchorElement && node.href && (node.protocol === 'http:' || node.protocol === 'https:' || node.protocol === 'mailto:'));
-};
-
-/**
- * Return true if the provided HTML Element can be used to build a
- * Draftjs-compatible image.
- */
-var isValidImage = function isValidImage(node) {
-  return !!(node instanceof HTMLImageElement && node.attributes.getNamedItem('src') && node.attributes.getNamedItem('src').value);
-};
-
-/**
- *  ContentBlockConfig is a mutable data structure that holds all
- *  the information required to build a ContentBlock and an array of
- *  all the child nodes (childConfigs).
- *  It is being used a temporary data structure by the
- *  ContentBlocksBuilder class.
- */
-
-/**
- * ContentBlocksBuilder builds a list of ContentBlocks and an Entity Map
- * out of one (or several) HTMLElement(s).
- *
- * The algorithm has two passes: first it builds a tree of ContentBlockConfigs
- * by walking through the HTML nodes and their children, then it walks the
- * ContentBlockConfigs tree to compute parents/siblings and create
- * the actual ContentBlocks.
- *
- * Typical usage is:
- *     new ContentBlocksBuilder()
- *        .addDOMNode(someHTMLNode)
- *        .addDOMNode(someOtherHTMLNode)
- *       .getContentBlocks();
- *
- */
-var ContentBlocksBuilder = function () {
-
-  // Map HTML tags to draftjs block types and disambiguation function
-
-
-  // The content blocks generated from the blockConfigs
-
-  // Most of the method in the class depend on the state of the content builder
-  // (i.e. currentBlockType, currentDepth, currentEntity etc.). Though it may
-  // be confusing at first, it made the code simpler than the alternative which
-  // is to pass those values around in every call.
-
-  // The following attributes are used to accumulate text and styles
-  // as we are walking the HTML node tree.
-  function ContentBlocksBuilder(blockTypeMap, disambiguate) {
-    _classCallCheck(this, ContentBlocksBuilder);
-
-    this.clear();
-    this.blockTypeMap = blockTypeMap;
-    this.disambiguate = disambiguate;
-  }
-
-  /**
-   * Clear the internal state of the ContentBlocksBuilder
-   */
-
-
-  // Entity map use to store links and images found in the HTML nodes
-
-
-  // Describes the future ContentState as a tree of content blocks
-
-
-  ContentBlocksBuilder.prototype.clear = function clear() {
-    this.characterList = List();
-    this.blockConfigs = [];
-    this.currentBlockType = 'unstyled';
-    this.currentDepth = 0;
-    this.currentEntity = null;
-    this.currentStyle = OrderedSet();
-    this.currentText = '';
-    this.entityMap = DraftEntity;
-    this.wrapper = 'ul';
-    this.contentBlocks = [];
-  };
-
-  /**
-   * Add an HTMLElement to the ContentBlocksBuilder
-   */
-
-
-  ContentBlocksBuilder.prototype.addDOMNode = function addDOMNode(node) {
-    var _blockConfigs;
-
-    this.contentBlocks = [];
-    // Converts the HTML node to block config
-    (_blockConfigs = this.blockConfigs).push.apply(_blockConfigs, this._toBlockConfigs([node]));
-
-    // There might be some left over text in the builder's
-    // internal state, if so make a ContentBlock out of it.
-    this._trimCurrentText();
-    if (this.currentText !== '') {
-      this.blockConfigs.push(this._makeBlockConfig());
-    }
-
-    // for chaining
-    return this;
-  };
-
-  /**
-   * Return the ContentBlocks and the EntityMap that corresponds
-   * to the previously added HTML nodes.
-   */
-
-
-  ContentBlocksBuilder.prototype.getContentBlocks = function getContentBlocks() {
-    if (this.contentBlocks.length === 0) {
-      if (experimentalTreeDataSupport) {
-        this._toContentBlocks(this.blockConfigs);
-      } else {
-        this._toFlatContentBlocks(this.blockConfigs);
-      }
-    }
-    return {
-      contentBlocks: this.contentBlocks,
-      entityMap: this.entityMap
-    };
-  };
-
-  /**
-   * Add a new inline style to the upcoming nodes.
-   */
-
-
-  ContentBlocksBuilder.prototype.addStyle = function addStyle(inlineStyle) {
-    this.currentStyle = this.currentStyle.add(inlineStyle);
-  };
-
-  /**
-   * Remove a currently applied inline style.
-   */
-
-
-  ContentBlocksBuilder.prototype.removeStyle = function removeStyle(inlineStyle) {
-    this.currentStyle = this.currentStyle.remove(inlineStyle);
-  };
-
-  // ***********************************WARNING******************************
-  // The methods below this line are private - don't call them directly.
-
-  /**
-   * Generate a new ContentBlockConfig out of the current internal state
-   * of the builder, then clears the internal state.
-   */
-
-
-  ContentBlocksBuilder.prototype._makeBlockConfig = function _makeBlockConfig() {
-    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    var key = config.key || generateRandomKey();
-    var block = _extends({
-      key: key,
-      type: this.currentBlockType,
-      text: this.currentText,
-      characterList: this.characterList,
-      depth: this.currentDepth,
-      parent: null,
-      children: List(),
-      prevSibling: null,
-      nextSibling: null,
-      childConfigs: []
-    }, config);
-    this.characterList = List();
-    this.currentBlockType = 'unstyled';
-    this.currentDepth = 0;
-    this.currentText = '';
-    return block;
-  };
-
-  /**
-   * Converts an array of HTML elements to a multi-root tree of content
-   * block configs. Some text content may be left in the builders internal
-   * state to enable chaining sucessive calls.
-   */
-
-
-  ContentBlocksBuilder.prototype._toBlockConfigs = function _toBlockConfigs(nodes) {
-    var blockConfigs = [];
-
-    for (var i = 0; i < nodes.length; i++) {
-      var node = nodes[i];
-      var nodeName = node.nodeName.toLowerCase();
-
-      if (nodeName === 'body' || nodeName === 'ol' || nodeName === 'ul') {
-        // body, ol and ul are 'block' type nodes so create a block config
-        // with the text accumulated so far (if any)
-        this._trimCurrentText();
-        if (this.currentText !== '') {
-          blockConfigs.push(this._makeBlockConfig());
-        }
-
-        // body, ol and ul nodes are ignored, but their children are inlined in
-        // the parent block config.
-        var wasWrapper = this.wrapper;
-        if (nodeName === 'ol' || nodeName === 'ul') {
-          this.wrapper = nodeName;
-        }
-        blockConfigs.push.apply(blockConfigs, this._toBlockConfigs(Array.from(node.childNodes)));
-        this.wrapper = wasWrapper;
-        continue;
-      }
-
-      var blockType = this.blockTypeMap.get(nodeName);
-      if (blockType !== undefined) {
-        // 'block' type node means we need to create a block config
-        // with the text accumulated so far (if any)
-        this._trimCurrentText();
-        if (this.currentText !== '') {
-          blockConfigs.push(this._makeBlockConfig());
-        }
-
-        var wasCurrentDepth = this.currentDepth;
-        var _wasWrapper = this.wrapper;
-        this.wrapper = nodeName === 'pre' ? 'pre' : this.wrapper;
-
-        if (typeof blockType !== 'string') {
-          blockType = this.disambiguate(nodeName, this.wrapper) || blockType[0] || 'unstyled';
-        }
-
-        if (experimentalTreeDataSupport && node instanceof HTMLElement && (blockType === 'unordered-list-item' || blockType === 'ordered-list-item')) {
-          this.currentDepth = getListItemDepth(node);
-        }
-
-        var _key = generateRandomKey();
-        var _childConfigs = this._toBlockConfigs(Array.from(node.childNodes));
-        this._trimCurrentText();
-        blockConfigs.push(this._makeBlockConfig({
-          key: _key,
-          childConfigs: _childConfigs,
-          type: blockType
-        }));
-
-        this.currentDepth = wasCurrentDepth;
-        this.wrapper = _wasWrapper;
-        continue;
-      }
-
-      if (nodeName === '#text') {
-        this._addTextNode(node);
-        continue;
-      }
-
-      if (isValidImage(node)) {
-        this._addImgNode(node);
-        continue;
-      }
-
-      if (isValidAnchor(node)) {
-        this._addAnchorNode(node, blockConfigs);
-        continue;
-      }
-
-      var inlineStyle = HTMLTagToInlineStyleMap.get(nodeName);
-      if (inlineStyle !== undefined) {
-        this.addStyle(inlineStyle);
-      }
-
-      blockConfigs.push.apply(blockConfigs, this._toBlockConfigs(Array.from(node.childNodes)));
-
-      if (inlineStyle !== undefined) {
-        this.removeStyle(inlineStyle);
-      }
-
-      this._updateStyleFromNodeAttributes(node);
-    }
-
-    return blockConfigs;
-  };
-
-  /**
-   * Append a string of text to the internal buffer.
-   */
-
-
-  ContentBlocksBuilder.prototype._appendText = function _appendText(text) {
-    var _characterList;
-
-    this.currentText += text;
-    var characterMetadata = CharacterMetadata.create({
-      style: this.currentStyle,
-      entity: this.currentEntity
-    });
-    this.characterList = (_characterList = this.characterList).push.apply(_characterList, Array(text.length).fill(characterMetadata));
-  };
-
-  /**
-   * Trim the text in the internal buffer.
-   */
-
-
-  ContentBlocksBuilder.prototype._trimCurrentText = function _trimCurrentText() {
-    var l = this.currentText.length;
-    var begin = l - this.currentText.trimLeft().length;
-    var end = this.currentText.trimRight().length;
-
-    // We should not trim whitespaces for which an entity is defined.
-    var entity = this.characterList.findEntry(function (characterMetadata) {
-      return characterMetadata.getEntity() !== null;
-    });
-    begin = entity !== undefined ? Math.min(begin, entity[0]) : begin;
-
-    entity = this.characterList.reverse().findEntry(function (characterMetadata) {
-      return characterMetadata.getEntity() !== null;
-    });
-    end = entity !== undefined ? Math.max(end, l - entity[0]) : end;
-
-    if (begin > end) {
-      this.currentText = '';
-      this.characterList = List();
-    } else {
-      this.currentText = this.currentText.slice(begin, end);
-      this.characterList = this.characterList.slice(begin, end);
-    }
-  };
-
-  /**
-   * Add the content of an HTML text node to the internal state
-   */
-
-
-  ContentBlocksBuilder.prototype._addTextNode = function _addTextNode(node) {
-    var text = node.textContent;
-    var trimmedText = text.trim();
-
-    // If we are not in a pre block and the trimmed content is empty,
-    // normalize to a single space.
-    if (trimmedText === '' && this.wrapper !== 'pre') {
-      text = ' ';
-    }
-
-    if (this.wrapper !== 'pre') {
-      // Can't use empty string because MSWord
-      text = text.replace(REGEX_LF, SPACE);
-    }
-
-    this._appendText(text);
-  };
-
-  /**
-   * Add the content of an HTML img node to the internal state
-   */
-
-
-  ContentBlocksBuilder.prototype._addImgNode = function _addImgNode(node) {
-    if (!(node instanceof HTMLImageElement)) {
-      return;
-    }
-    var image = node;
-    var entityConfig = {};
-
-    imgAttr.forEach(function (attr) {
-      var imageAttribute = image.getAttribute(attr);
-      if (imageAttribute) {
-        entityConfig[attr] = imageAttribute;
-      }
-    });
-
-    // TODO: T15530363 update this when we remove DraftEntity entirely
-    this.currentEntity = this.entityMap.__create('IMAGE', 'MUTABLE', entityConfig);
-
-    // The child text node cannot just have a space or return as content -
-    // we strip those out.
-    // See https://github.com/facebook/draft-js/issues/231 for some context.
-
-    this._appendText('\uD83D\uDCF7');
-    this.currentEntity = null;
-  };
-
-  /**
-   * Add the content of an HTML 'a' node to the internal state. Child nodes
-   * (if any) are converted to Block Configs and appended to the provided
-   * blockConfig array.
-   */
-
-
-  ContentBlocksBuilder.prototype._addAnchorNode = function _addAnchorNode(node, blockConfigs) {
-    // The check has already been made by isValidAnchor but
-    // we have to do it again to keep flow happy.
-    if (!(node instanceof HTMLAnchorElement)) {
-      return;
-    }
-    var anchor = node;
-    var entityConfig = {};
-
-    anchorAttr.forEach(function (attr) {
-      var anchorAttribute = anchor.getAttribute(attr);
-      if (anchorAttribute) {
-        entityConfig[attr] = anchorAttribute;
-      }
-    });
-
-    entityConfig.url = new URI(anchor.href).toString();
-    // TODO: T15530363 update this when we remove DraftEntity completely
-    this.currentEntity = this.entityMap.__create('LINK', 'MUTABLE', entityConfig || {});
-
-    blockConfigs.push.apply(blockConfigs, this._toBlockConfigs(Array.from(node.childNodes)));
-    this.currentEntity = null;
-  };
-
-  /**
-   * Try to guess the inline style of an HTML element based on its css
-   * styles (font-weight, font-style and text-decoration).
-   */
-
-
-  ContentBlocksBuilder.prototype._updateStyleFromNodeAttributes = function _updateStyleFromNodeAttributes(node) {
-    if (!(node instanceof HTMLElement)) {
-      return;
-    }
-
-    var htmlElement = node;
-    var fontWeight = htmlElement.style.fontWeight;
-    var fontStyle = htmlElement.style.fontStyle;
-    var textDecoration = htmlElement.style.textDecoration;
-
-    if (boldValues.indexOf(fontWeight) >= 0) {
-      this.addStyle('BOLD');
-    } else if (notBoldValues.indexOf(fontWeight) >= 0) {
-      this.removeStyle('BOLD');
-    }
-
-    if (fontStyle === 'italic') {
-      this.addStyle('ITALIC');
-    } else if (fontStyle === 'normal') {
-      this.removeStyle('ITALIC');
-    }
-
-    if (textDecoration === 'underline') {
-      this.addStyle('UNDERLINE');
-    }
-    if (textDecoration === 'line-through') {
-      this.addStyle('STRIKETHROUGH');
-    }
-    if (textDecoration === 'none') {
-      this.removeStyle('UNDERLINE');
-      this.removeStyle('STRIKETHROUGH');
-    }
-  };
-
-  /**
-   * Walk the BlockConfig tree, compute parent/children/siblings,
-   * and generate the corresponding ContentBlockNode
-   */
-
-
-  ContentBlocksBuilder.prototype._toContentBlocks = function _toContentBlocks(blockConfigs) {
-    var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-    var l = blockConfigs.length - 1;
-    for (var i = 0; i <= l; i++) {
-      var config = blockConfigs[i];
-      config.parent = parent;
-      config.prevSibling = i > 0 ? blockConfigs[i - 1].key : null;
-      config.nextSibling = i < l ? blockConfigs[i + 1].key : null;
-      config.children = List(config.childConfigs.map(function (child) {
-        return child.key;
-      }));
-      this.contentBlocks.push(new ContentBlockNode(_extends({}, config)));
-      this._toContentBlocks(config.childConfigs, config.key);
-    }
-  };
-
-  // ***********************************************************************
-  // The two methods below are used for backward compatibility when
-  // experimentalTreeDataSupport is disabled.
-
-  /**
-   * Same as _toContentBlocks but replaces nested blocks by their
-   * text content.
-   */
-
-
-  ContentBlocksBuilder.prototype._toFlatContentBlocks = function _toFlatContentBlocks(blockConfigs) {
-    var l = blockConfigs.length - 1;
-    for (var i = 0; i <= l; i++) {
-      var config = blockConfigs[i];
-
-      var _extractTextFromBlock = this._extractTextFromBlockConfigs(config.childConfigs),
-          _text = _extractTextFromBlock.text,
-          _characterList2 = _extractTextFromBlock.characterList;
-
-      this.contentBlocks.push(new ContentBlock(_extends({}, config, {
-        text: config.text + _text,
-        characterList: config.characterList.concat(_characterList2)
-      })));
-    }
-  };
-
-  /**
-   * Extract the text and the associated inline styles form an
-   * array of content block configs.
-   */
-
-
-  ContentBlocksBuilder.prototype._extractTextFromBlockConfigs = function _extractTextFromBlockConfigs(blockConfigs) {
-    var l = blockConfigs.length - 1;
-    var text = '';
-    var characterList = List();
-    for (var i = 0; i <= l; i++) {
-      var config = blockConfigs[i];
-      text += config.text;
-      characterList = characterList.concat(config.characterList);
-      /* $FlowFixMe(>=0.68.0 site=www,mobile) This comment suppresses an error
-       * found when Flow v0.68 was deployed. To see the error delete this
-       * comment and run Flow. */
-      if (text !== '' && config.blockType !== 'unstyled') {
-        text += '\n';
-        characterList = characterList.push(characterList.last());
-      }
-      var _children = this._extractTextFromBlockConfigs(config.childConfigs);
-      text += _children.text;
-      characterList = characterList.concat(_children.characterList);
-    }
-    return { text: text, characterList: characterList };
-  };
-
-  return ContentBlocksBuilder;
-}();
-
-/**
- * Converts an HTML string to an array of ContentBlocks and an EntityMap
- * suitable to initialize the internal state of a Draftjs component.
- */
-
-
-var convertFromHTMLtoContentBlocks = function convertFromHTMLtoContentBlocks(html) {
-  var DOMBuilder = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getSafeBodyFromHTML;
-  var blockRenderMap = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DefaultDraftBlockRenderMap;
-
-  // Be ABSOLUTELY SURE that the dom builder you pass here won't execute
-  // arbitrary code in whatever environment you're running this in. For an
-  // example of how we try to do this in-browser, see getSafeBodyFromHTML.
-
-  // Remove funky characters from the HTML string
-  html = html.trim().replace(REGEX_CR, '').replace(REGEX_NBSP, SPACE).replace(REGEX_CARRIAGE, '').replace(REGEX_ZWS, '');
-
-  // Build a DOM tree out of the HTML string
-  var safeBody = DOMBuilder(html);
-  if (!safeBody) {
-    return null;
-  }
-
-  // Build a BlockTypeMap out of the BlockRenderMap
-  var blockTypeMap = buildBlockTypeMap(blockRenderMap);
-
-  // Select the proper block type for the cases where the blockRenderMap
-  // uses multiple block types for the same html tag.
-  var disambiguate = function disambiguate(tag, wrapper) {
-    if (tag === 'li') {
-      return wrapper === 'ol' ? 'ordered-list-item' : 'unordered-list-item';
-    }
-    return null;
-  };
-
-  return new ContentBlocksBuilder(blockTypeMap, disambiguate).addDOMNode(safeBody).getContentBlocks();
-};
-
-module.exports = convertFromHTMLtoContentBlocks;
-
-/***/ }),
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16546,7 +16525,6 @@ module.exports = convertFromHTMLtoContentBlocks;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule adjustBlockDepthForContentState
  * @format
  * 
  */
@@ -16591,7 +16569,6 @@ module.exports = adjustBlockDepthForContentState;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule splitTextIntoTextBlocks
  * @format
  *  strict
  */
@@ -16619,7 +16596,6 @@ module.exports = splitTextIntoTextBlocks;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule editOnSelect
  * @format
  * 
  */
@@ -16680,7 +16656,6 @@ module.exports = editOnSelect;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getDraftEditorSelection
  * @format
  * 
  */
@@ -16723,7 +16698,6 @@ module.exports = getDraftEditorSelection;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftEditorPlaceholder.react
  * @format
  * 
  */
@@ -16803,7 +16777,6 @@ module.exports = DraftEditorPlaceholder;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftODS
  */
 
 
@@ -16825,7 +16798,6 @@ module.exports = {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule convertFromDraftStateToRaw
  * @format
  * 
  */
@@ -16838,7 +16810,7 @@ var _extends = _assign || function (target) { for (var i = 1; i < arguments.leng
 
 var ContentBlock = __webpack_require__(13);
 var ContentBlockNode = __webpack_require__(6);
-var DraftStringKey = __webpack_require__(68);
+var DraftStringKey = __webpack_require__(69);
 
 var encodeEntityRanges = __webpack_require__(151);
 var encodeInlineStyleRanges = __webpack_require__(152);
@@ -16971,14 +16943,13 @@ module.exports = convertFromDraftStateToRaw;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule encodeEntityRanges
  * @format
  * 
  */
 
 
 
-var DraftStringKey = __webpack_require__(68);
+var DraftStringKey = __webpack_require__(69);
 var UnicodeUtils = __webpack_require__(16);
 
 var strlen = UnicodeUtils.strlen;
@@ -17019,7 +16990,6 @@ module.exports = encodeEntityRanges;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule encodeInlineStyleRanges
  * @format
  * 
  */
@@ -17094,7 +17064,6 @@ module.exports = encodeInlineStyleRanges;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule convertFromRawToDraftState
  * @format
  * 
  */
@@ -17117,7 +17086,7 @@ var createCharacterList = __webpack_require__(155);
 var decodeEntityRanges = __webpack_require__(156);
 var decodeInlineStyleRanges = __webpack_require__(157);
 var generateRandomKey = __webpack_require__(10);
-var gkx = __webpack_require__(8);
+var gkx = __webpack_require__(7);
 var invariant = __webpack_require__(1);
 
 var experimentalTreeDataSupport = gkx('draft_tree_data_support');
@@ -17334,7 +17303,6 @@ var _extends = _assign || function (target) { for (var i = 1; i < arguments.leng
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule DraftTreeAdapter
  * @format
  * 
  *
@@ -17477,7 +17445,6 @@ module.exports = DraftTreeAdapter;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule createCharacterList
  * @format
  * 
  */
@@ -17513,7 +17480,6 @@ module.exports = createCharacterList;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule decodeEntityRanges
  * @format
  * 
  */
@@ -17559,7 +17525,6 @@ module.exports = decodeEntityRanges;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule decodeInlineStyleRanges
  * @format
  * 
  */
@@ -17609,7 +17574,6 @@ module.exports = decodeInlineStyleRanges;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getVisibleSelectionRect
  * @format
  * 
  */
@@ -17662,7 +17626,6 @@ module.exports = getVisibleSelectionRect;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getRangeBoundingClientRect
  * @format
  * 
  */

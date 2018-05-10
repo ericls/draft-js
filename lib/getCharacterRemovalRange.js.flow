@@ -6,7 +6,6 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule getCharacterRemovalRange
  * @format
  * @flow
  */
@@ -18,10 +17,10 @@ import type { DraftRemovalDirection } from './DraftRemovalDirection';
 import type { EntityMap } from './EntityMap';
 import type SelectionState from './SelectionState';
 
-var DraftEntitySegments = require('./DraftEntitySegments');
+const DraftEntitySegments = require('./DraftEntitySegments');
 
-var getRangesForDraftEntity = require('./getRangesForDraftEntity');
-var invariant = require('fbjs/lib/invariant');
+const getRangesForDraftEntity = require('./getRangesForDraftEntity');
+const invariant = require('fbjs/lib/invariant');
 
 /**
  * Given a SelectionState and a removal direction, determine the entire range
@@ -33,14 +32,14 @@ var invariant = require('fbjs/lib/invariant');
  * will be adjusted accordingly.
  */
 function getCharacterRemovalRange(entityMap: EntityMap, startBlock: BlockNodeRecord, endBlock: BlockNodeRecord, selectionState: SelectionState, direction: DraftRemovalDirection): SelectionState {
-  var start = selectionState.getStartOffset();
-  var end = selectionState.getEndOffset();
-  var startEntityKey = startBlock.getEntityAt(start);
-  var endEntityKey = endBlock.getEntityAt(end - 1);
+  const start = selectionState.getStartOffset();
+  const end = selectionState.getEndOffset();
+  const startEntityKey = startBlock.getEntityAt(start);
+  const endEntityKey = endBlock.getEntityAt(end - 1);
   if (!startEntityKey && !endEntityKey) {
     return selectionState;
   }
-  var newSelectionState = selectionState;
+  let newSelectionState = selectionState;
   if (startEntityKey && startEntityKey === endEntityKey) {
     newSelectionState = getEntityRemovalRange(entityMap, startBlock, newSelectionState, direction, startEntityKey, true, true);
   } else if (startEntityKey && endEntityKey) {
@@ -68,10 +67,10 @@ function getCharacterRemovalRange(entityMap: EntityMap, startBlock: BlockNodeRec
 }
 
 function getEntityRemovalRange(entityMap: EntityMap, block: BlockNodeRecord, selectionState: SelectionState, direction: DraftRemovalDirection, entityKey: string, isEntireSelectionWithinEntity: boolean, isEntityAtStart: boolean): SelectionState {
-  var start = selectionState.getStartOffset();
-  var end = selectionState.getEndOffset();
-  var entity = entityMap.__get(entityKey);
-  var mutability = entity.getMutability();
+  let start = selectionState.getStartOffset();
+  let end = selectionState.getEndOffset();
+  const entity = entityMap.__get(entityKey);
+  const mutability = entity.getMutability();
   const sideToConsider = isEntityAtStart ? start : end;
 
   // `MUTABLE` entities can just have the specified range of text removed
@@ -81,11 +80,11 @@ function getEntityRemovalRange(entityMap: EntityMap, block: BlockNodeRecord, sel
   }
 
   // Find the entity range that overlaps with our removal range.
-  var entityRanges = getRangesForDraftEntity(block, entityKey).filter(range => sideToConsider <= range.end && sideToConsider >= range.start);
+  const entityRanges = getRangesForDraftEntity(block, entityKey).filter(range => sideToConsider <= range.end && sideToConsider >= range.start);
 
   invariant(entityRanges.length == 1, 'There should only be one entity range within this removal range.');
 
-  var entityRange = entityRanges[0];
+  const entityRange = entityRanges[0];
 
   // For `IMMUTABLE` entity types, we will remove the entire entity range.
   if (mutability === 'IMMUTABLE') {
@@ -106,7 +105,7 @@ function getEntityRemovalRange(entityMap: EntityMap, block: BlockNodeRecord, sel
     }
   }
 
-  var removalRange = DraftEntitySegments.getRemovalRange(start, end, block.getText().slice(entityRange.start, entityRange.end), entityRange.start, direction);
+  const removalRange = DraftEntitySegments.getRemovalRange(start, end, block.getText().slice(entityRange.start, entityRange.end), entityRange.start, direction);
 
   return selectionState.merge({
     anchorOffset: removalRange.start,
