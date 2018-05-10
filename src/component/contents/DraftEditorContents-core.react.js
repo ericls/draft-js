@@ -131,6 +131,8 @@ class DraftEditorContents extends React.Component<Props> {
       editorState,
       editorKey,
       textDirectionality,
+      contentWrapper: ContentWrapper,
+      blockWrapper: BlockWrapper,
     } = this.props;
 
     const content = editorState.getCurrentContent();
@@ -243,7 +245,7 @@ class DraftEditorContents extends React.Component<Props> {
     }
 
     // Group contiguous runs of blocks that have the same wrapperTemplate
-    const outputBlocks = [];
+    let outputBlocks = [];
     for (let ii = 0; ii < processedBlocks.length; ) {
       const info: any = processedBlocks[ii];
       if (info.wrapperTemplate) {
@@ -268,6 +270,20 @@ class DraftEditorContents extends React.Component<Props> {
         outputBlocks.push(info.block);
         ii++;
       }
+    }
+
+    if (BlockWrapper) {
+      outputBlocks = outputBlocks.map(b => <BlockWrapper>{b}</BlockWrapper>)
+    }
+
+    if (ContentWrapper) {
+      return (
+        <div data-contents="true">
+          <ContentWrapper>
+            {outputBlocks}
+          </ContentWrapper>
+        </div>
+      );
     }
 
     return <div data-contents="true">{outputBlocks}</div>;

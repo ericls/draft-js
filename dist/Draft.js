@@ -9953,7 +9953,9 @@ var DraftEditor = function (_React$Component2) {
         editorState = _props.editorState,
         readOnly = _props.readOnly,
         textAlignment = _props.textAlignment,
-        textDirectionality = _props.textDirectionality;
+        textDirectionality = _props.textDirectionality,
+        contentWrapper = _props.contentWrapper,
+        blockWrapper = _props.blockWrapper;
 
 
     var rootClass = cx({
@@ -9989,7 +9991,9 @@ var DraftEditor = function (_React$Component2) {
       editorKey: this._editorKey,
       editorState: editorState,
       key: 'contents' + this.state.contentsKey,
-      textDirectionality: textDirectionality
+      textDirectionality: textDirectionality,
+      contentWrapper: contentWrapper,
+      blockWrapper: blockWrapper
     };
 
     return React.createElement(
@@ -13617,7 +13621,9 @@ var DraftEditorContents = function (_React$Component) {
         customStyleFn = _props.customStyleFn,
         editorState = _props.editorState,
         editorKey = _props.editorKey,
-        textDirectionality = _props.textDirectionality;
+        textDirectionality = _props.textDirectionality,
+        ContentWrapper = _props.contentWrapper,
+        BlockWrapper = _props.blockWrapper;
 
 
     var content = editorState.getCurrentContent();
@@ -13736,6 +13742,28 @@ var DraftEditorContents = function (_React$Component) {
         outputBlocks.push(info.block);
         _ii++;
       }
+    }
+
+    if (BlockWrapper) {
+      outputBlocks = outputBlocks.map(function (b) {
+        return React.createElement(
+          BlockWrapper,
+          null,
+          b
+        );
+      });
+    }
+
+    if (ContentWrapper) {
+      return React.createElement(
+        'div',
+        { 'data-contents': 'true' },
+        React.createElement(
+          ContentWrapper,
+          null,
+          outputBlocks
+        )
+      );
     }
 
     return React.createElement(
