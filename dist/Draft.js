@@ -4476,7 +4476,6 @@ function editOnInput(editor) {
   }
 
   var domSelection = global.getSelection();
-  console.log(domSelection);
   var anchorNode = domSelection.anchorNode,
       isCollapsed = domSelection.isCollapsed;
 
